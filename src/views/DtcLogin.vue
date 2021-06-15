@@ -3,7 +3,7 @@
     <div class="absolute inset-1">
       <img src="logo.png" />
     </div>
-    <div class="flex dtc-box relative"></div>
+    <div class="flex dtc-box relative login-box" data-msg="生物安全會電子表單系統"></div>
   </section>
 </template>
 
@@ -52,6 +52,26 @@ export default {
   height: 517px;
   background: #ebf2ff 0% 0% no-repeat padding-box;
   border-radius: 6px;
+}
+
+.login-box::before,
+.login-box::after {
+  content: attr(data-msg);
+  position: absolute;
+  font: normal normal bold 40px/58px Source Han Sans TW;
+  letter-spacing: 4px;
+  color: #00448c;
+
+  top: -60px;
+  left: 10px;
+}
+.login-box::after {
+  content: "";
+  top: 0;
+  bottom: -60px;
+  left: 0;
+  right: 0px;
+  background: url(dtclogo.png) no-repeat bottom right;
 }
 
 :deep(.el-input-group__append),
