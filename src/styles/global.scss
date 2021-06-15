@@ -1,0 +1,31 @@
+.dtc-nav-bar{
+    max-height: 70px;
+}
+
+#app input{
+  font-size:1rem !important;
+}
+
+[hidden]{
+  display:none;
+}
+input{
+   @apply focus:outline-none focus:ring focus:border-blue-300 #{!important};
+
+}
+
+.button-2 {
+  grid-template-columns: max-content max-content !important;
+  gap: 1.5rem !important;
+}
+
+.dtc-door-way-section header > div {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  line-height: 50px;
+}
+
+.p-field-checkbox .tran{
+  transform: translateY(4px) !important;
+}
+

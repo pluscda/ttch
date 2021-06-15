@@ -1,0 +1,22 @@
+
+.dtc-tabs{
+  position: relative;
+  @apply cursor-pointer flex flex-none space-x-0.5;
+  > * {
+    height:45px;
+    line-height: 45px;
+    font-weight: bold;
+    @apply px-3;
+    @apply bg-light-pattern text-black;
+  }
+  .active{
+     @apply bg-light-pattern-active text-black;
+  }
+  &::after{
+    content:'';
+    width:98vw;
+    height: 6px;
+    @apply absolute inset-y-full;
+    @apply bg-light-pattern-active text-black;
+  }
+}
