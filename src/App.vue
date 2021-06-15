@@ -81,6 +81,7 @@ watch(idle2, () => {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   overflow: hidden !important;
+  bacground: white !important;
 }
 
 .warning-idle {

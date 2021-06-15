@@ -1,26 +1,10 @@
 <template>
-  <div id="dtc-login">
-    <section class="login-panel">
-      <h3 class="text-2xl text-white mb-11">登入基本醫療服務</h3>
-      <el-input placeholder="使用者信箱" v-model="name" class="">
-        <template #prepend>
-          <i-mdi:email></i-mdi:email>
-        </template>
-      </el-input>
-      <div class="mb-6"></div>
-      <el-input placeholder="使用者密碼" v-model="pwd" class="">
-        <template #prepend>
-          <i-ri:lock-password-fill />
-        </template>
-      </el-input>
-      <div class="mb-10"></div>
-      <el-button type="warning" class="max-w-md" round @click="login">登入</el-button>
-      <footer class="flex justify-between hidden">
-        <h4 class="pl-2 mt-4 text-sm text-left text-orange-200 cursor-pointer" @click.stop="$router.push('/dtcregister')">註冊帳戶</h4>
-        <h4 class="relative float-right pl-2 mt-4 text-sm text-left text-orange-200 cursor-pointer" @click.stop="$router.push('/resetpwd')">忘記密碼</h4>
-      </footer>
-    </section>
-  </div>
+  <section class="relative grid place-items-center !bg-white" style="width: 100vw; height: 100vh">
+    <div class="absolute inset-1">
+      <img src="logo.png" />
+    </div>
+    <div class="flex dtc-box relative"></div>
+  </section>
 </template>
 
 <script>
@@ -63,16 +47,11 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.login-panel {
-  height: 370px;
-  width: 400px;
-  border-radius: 20px !important;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.6) !important;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  z-index: 99999;
+.dtc-box {
+  width: 503px;
+  height: 517px;
+  background: #ebf2ff 0% 0% no-repeat padding-box;
+  border-radius: 6px;
 }
 
 :deep(.el-input-group__append),
