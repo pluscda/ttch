@@ -1,12 +1,16 @@
 <template>
   <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7">
-    <div v-for="(item, i) in icons" @click="showMenu($event, item, i)" :key="i">
+    <div v-for="(item, i) in icons" @click="showMenu(i)" :key="i" :ref="'myref' + i">
       <img :src="item" class="block cursor-pointer" width="30" height="27" />
     </div>
-    <nav class="my-menuw">
+    <nav class="left-fixed-menu hidden" ref="fixedMenu">
       <div v-for="(item, i) in topMenuu" :key="i">
         <h4>
-          <h5 style="cursor: pointer">{{ item }}</h5>
+          <h5 style="cursor: pointer" @click="showMenu(i)">
+            {{ item }}
+            <i class="el-icon-arrow-right float-right transform translate-x-4" v-if="activeTab !== i"></i>
+            <i class="el-icon-arrow-down float-right transform translate-x-4" v-if="activeTab === i"></i>
+          </h5>
           <section v-if="activeTab == i">
             <div v-for="(row, j) in rows[i].split(',')" :key="'row' + j" style="background: #d3dceb" class="sub-menu !py-2">
               <p style="cursor: pointer" class="ml-6" v-html="row"></p>
@@ -32,7 +36,6 @@ export default {
   name: "indexwidthbar2",
   data() {
     return {
-      dtcCurrentCmp: "",
       icons,
       topMenuu,
       rows,
@@ -41,12 +44,13 @@ export default {
   },
   components: {},
   methods: {
-    showMenu(evt, item, idx) {
+    showMenu(idx) {
       [...document.querySelectorAll(".dtc-heightlight-tab")].forEach((s) => {
         s.classList.remove("dtc-heightlight-tab");
       });
-      evt.target.classList.add("dtc-heightlight-tab");
+      this.$refs[`myref${idx}`].classList.add("dtc-heightlight-tab");
       this.activeTab = idx;
+      this.$refs.fixedMenu.classList.remove("hidden");
     },
   },
   mounted() {},
@@ -73,7 +77,7 @@ export default {
   max-height: calc(100vh - 80px);
 }
 
-.my-menuw {
+.left-fixed-menu {
   position: fixed !important;
   height: calc(100vh - 80px) !important;
   top: 32px;
