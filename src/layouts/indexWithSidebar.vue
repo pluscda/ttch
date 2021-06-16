@@ -59,6 +59,9 @@ export default {
       const r = el.target.classList.contains("dtc-big-icon-detected");
       if (!r) {
         this.$refs.fixedMenu.classList.add("hidden");
+        [...document.querySelectorAll(".dtc-heightlight-tab")].forEach((s) => {
+          s.classList.remove("dtc-heightlight-tab");
+        });
       }
     },
   },
