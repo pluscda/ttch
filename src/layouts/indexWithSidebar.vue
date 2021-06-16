@@ -4,12 +4,12 @@
       <img :src="item" class="block dtc-big-icon-detected" width="30" height="27" />
     </div>
     <nav class="left-fixed-menu hidden dtc-big-icon-detected" ref="fixedMenu">
-      <div v-for="(item, i) in topMenuu" :key="i" class="mb-4 dtc-big-icon-detected">
+      <div v-for="(item, i) in topMenuu" :key="i" class="mb-4 dtc-big-icon-detected relative" :class="activeTab === i ? 'dtc-line' : ''">
         <h4 class="dtc-big-icon-detected">
           <h5 style="cursor: pointer" @click="showMenu(i)" class="dtc-big-icon-detected">
             {{ item }}
             <i class="el-icon-arrow-right float-right transform translate-x-4 dtc-big-icon-detected" v-if="activeTab !== i"></i>
-            <i class="el-icon-arrow-down float-right transform translate-x-4 dtc-big-icon-detected" v-if="activeTab === i"></i>
+            <i class="el-icon-arrow-down float-right transform translate-x-4 translate-y-1 dtc-big-icon-detected" v-if="activeTab === i"></i>
           </h5>
           <section v-if="activeTab == i" class="dtc-big-icon-detected">
             <div v-for="(row, j) in rows[i].split(',')" :key="'row' + j" style="background: #d3dceb" class="sub-menu !py-2 dtc-big-icon-detected">
@@ -113,5 +113,15 @@ export default {
 }
 .sub-menu {
   box-shadow: 20px 0px 0 #d3dceb, -20px 0px 0 #d3dceb;
+}
+.dtc-line::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 3px;
+  width: 5px;
+  height: 20px;
+  background: #00448c 0% 0% no-repeat padding-box;
+  border-radius: 2px;
 }
 </style>
