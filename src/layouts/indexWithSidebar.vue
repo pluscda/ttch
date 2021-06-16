@@ -1,19 +1,19 @@
 <template>
-  <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7">
-    <div v-for="(item, i) in icons" @click="showMenu(i)" :key="i" :ref="'myref' + i">
-      <img :src="item" class="block cursor-pointer" width="30" height="27" />
+  <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7 dtc-big-icon-detected">
+    <div v-for="(item, i) in icons" @click="showMenu(i)" :key="i" :ref="'myref' + i" class="dtc-big-icon-detected cursor-pointer">
+      <img :src="item" class="block dtc-big-icon-detected" width="30" height="27" />
     </div>
-    <nav class="left-fixed-menu hidden" ref="fixedMenu">
-      <div v-for="(item, i) in topMenuu" :key="i">
-        <h4>
-          <h5 style="cursor: pointer" @click="showMenu(i)">
+    <nav class="left-fixed-menu hidden dtc-big-icon-detected" ref="fixedMenu">
+      <div v-for="(item, i) in topMenuu" :key="i" class="mb-4 dtc-big-icon-detected">
+        <h4 class="dtc-big-icon-detected">
+          <h5 style="cursor: pointer" @click="showMenu(i)" class="dtc-big-icon-detected">
             {{ item }}
-            <i class="el-icon-arrow-right float-right transform translate-x-4" v-if="activeTab !== i"></i>
-            <i class="el-icon-arrow-down float-right transform translate-x-4" v-if="activeTab === i"></i>
+            <i class="el-icon-arrow-right float-right transform translate-x-4 dtc-big-icon-detected" v-if="activeTab !== i"></i>
+            <i class="el-icon-arrow-down float-right transform translate-x-4 dtc-big-icon-detected" v-if="activeTab === i"></i>
           </h5>
-          <section v-if="activeTab == i">
-            <div v-for="(row, j) in rows[i].split(',')" :key="'row' + j" style="background: #d3dceb" class="sub-menu !py-2">
-              <p style="cursor: pointer" class="ml-6" v-html="row"></p>
+          <section v-if="activeTab == i" class="dtc-big-icon-detected">
+            <div v-for="(row, j) in rows[i].split(',')" :key="'row' + j" style="background: #d3dceb" class="sub-menu !py-2 dtc-big-icon-detected">
+              <p style="cursor: pointer" class="ml-6 dtc-big-icon-detected" v-html="row"></p>
             </div>
           </section>
         </h4>
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { fromEvent } from "rxjs";
+import { find, repeatWhen, mapTo, startWith, filter, tap } from "rxjs/operators";
 const icons = ["management.png", "application.png", "mailbox.png", "reviewarea.png", "search.png", "auditstatistics.png"];
 const topMenuu = ["系統管理", "電子表單申請", "個人資料區", "審核資料區", "電子表單查詢", "稽核統計作業"];
 const row0 = `帳號管理, 組織單位管理, 職稱管理,角色管理,系統功能管理,電子表單設定,簽核片語設定`;
@@ -32,6 +34,7 @@ const row3 = `待審核資料匣,已審核資料匣`;
 const row4 = `電子表單通用查詢作業`;
 const row5 = `交易歷程,一般統計查詢`;
 const rows = [row0, row1, row2, row3, row4, row5];
+let sub1 = "";
 export default {
   name: "indexwidthbar2",
   data() {
@@ -52,8 +55,19 @@ export default {
       this.activeTab = idx;
       this.$refs.fixedMenu.classList.remove("hidden");
     },
+    showHideMenu(el) {
+      const r = el.target.classList.contains("dtc-big-icon-detected");
+      if (!r) {
+        this.$refs.fixedMenu.classList.add("hidden");
+      }
+    },
   },
-  mounted() {},
+  mounted() {
+    sub1 = fromEvent(document, "click").pipe(tap(this.showHideMenu)).subscribe();
+  },
+  beforeUnmount() {
+    sub1.unsubscribe();
+  },
 };
 </script>
 
