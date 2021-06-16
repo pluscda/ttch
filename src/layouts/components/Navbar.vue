@@ -1,7 +1,7 @@
 <template>
   <nav class="text-blue-20 dtc-nav-bar2">
-    <img src="logo.png" class="object-cover block mt-2" width="250" height="78" />
-    <img src="systemtitle.png" class="object-cover block mt-4 ml-10" width="490" height="58" />
+    <img src="/logo.png" class="object-cover block mt-2" width="250" height="78" />
+    <img src="/systemtitle.png" class="object-cover block mt-4 ml-10" width="490" height="58" />
   </nav>
 </template>
 
