@@ -1,9 +1,23 @@
 <template>
   <section class="relative grid place-items-center !bg-white" style="width: 100vw; height: 100vh">
-    <div class="absolute inset-1">
+    <div class="absolute inset-1 z-0">
       <img src="logo.png" />
     </div>
-    <div class="flex dtc-box relative login-box" data-msg="生物安全會電子表單系統"></div>
+    <div class="flex flex-col dtc-box relative login-box z-10" data-msg="生物安全會電子表單系統">
+      <img src="login.png" class="mt-6 object-contain block self-center" width="190" height="40" />
+      <div class="dtc-input ml-20 flex space-x-2 mt-6">
+        <img src="user.png" class="object-contain block" width="40" height="40" />
+        <InputText type="text" v-model="value1" class="z-20 !bg-white w-60" placeholder="請輸入帳號"></InputText>
+      </div>
+      <div class="dtc-input ml-20 flex space-x-2 mt-6">
+        <img src="password.png" class="object-contain block" width="40" height="40" />
+        <InputText placeholder="請輸入密碼" type="password" v-model="pwd" class="z-20 !bg-white w-60" />
+      </div>
+      <div class="dtc-input ml-20 flex space-x-2 mt-6">
+        <img src="verificationcode.png" class="object-contain block" width="40" height="40" />
+        <InputText placeholder="請輸入驗證碼" type="text" v-model="pass2" class="z-20 !bg-white w-28" />
+      </div>
+    </div>
   </section>
 </template>
 
@@ -11,40 +25,15 @@
 import { inject, ref } from "vue";
 import { useRouter } from "vue-router";
 export default {
-  setup() {
-    const actions = inject("actions");
-    const name = ref("14tc_14_16_03");
-    const pwd = ref("654321");
-    const router = useRouter();
-    async function login() {
-      try {
-        // const { jwt, user, message } = await actions.login({ identifier: name.value, password: pwd.value });
-        // sessionStorage.token = jwt;
-        // jwt ? router.push("/register/list") : alert(JSON.stringify(message));
-        sessionStorage.token = "12";
-        actions.getAllDDL();
-        router.push("/register/list");
-      } catch (e) {
-        alert("error: " + e);
-      }
-    }
-
-    return { name, pwd, login };
+  data() {
+    return {
+      value1: "",
+      pwd: "",
+      pass2: "",
+    };
   },
 };
 </script>
-
-<style lang="scss" scoped>
-#dtc-login {
-  background-image: url("//unsplash.it/998/998");
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  display: grid;
-  place-items: center;
-  height: 100vh;
-}
-</style>
 
 <style lang="scss" scoped>
 .dtc-box {
@@ -52,6 +41,7 @@ export default {
   height: 517px;
   background: #ebf2ff 0% 0% no-repeat padding-box;
   border-radius: 6px;
+  z-index: 5;
 }
 
 .login-box::before,
@@ -61,7 +51,7 @@ export default {
   font: normal normal bold 40px/58px Source Han Sans TW;
   letter-spacing: 4px;
   color: #00448c;
-
+  z-index: 1;
   top: -60px;
   left: 10px;
 }
@@ -72,11 +62,5 @@ export default {
   left: 0;
   right: 0px;
   background: url(dtclogo.png) no-repeat bottom right;
-}
-
-:deep(.el-input-group__append),
-:deep(.el-input-group__prepend) {
-  background-color: #ffc107;
-  color: black;
 }
 </style>
