@@ -19,8 +19,8 @@
         <img src="turn.png" class="object-contain block" width="30" height="30" />
       </div>
 
-      <div class="dtc-input ml-36 flex space-x-6 mt-10">
-        <Button>確認登入</Button>
+      <div class="dtc-input ml-36 flex space-x-6 mt-10 z-20">
+        <Button @click="$router.push('/pharmacy')">確認登入</Button>
         <Button class="p-button-secondary">重新輸入</Button>
       </div>
     </div>
