@@ -1,13 +1,12 @@
 <template>
   <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7">
-    <img v-for="(item, i) in icons" :src="item" class="block" :key="i" width="30" height="27" />
+    <div v-for="(item, i) in icons" @click="showMenu(item)" :key="i" class="heightlight">
+      <img :src="item" class="block" width="30" height="27" />
+    </div>
   </section>
 </template>
 
 <script>
-import BasicNav from "/@/layouts/components/basicDrugNav.vue";
-import WsNav from "/@/layouts/components/drugWarehouseNav.vue";
-import StoreNav from "./components/drugStoreNav.vue";
 import { leftSideBar$ } from "/@/store";
 
 const icons = ["management.png", "application.png", "mailbox.png", "reviewarea.png", "search.png", "auditstatistics.png"];
@@ -19,11 +18,7 @@ export default {
       icons,
     };
   },
-  components: {
-    BasicNav,
-    WsNav,
-    StoreNav,
-  },
+  components: {},
   mounted() {
     leftSideBar$.subscribe((v) => {
       if (v == 1) {
@@ -48,6 +43,10 @@ export default {
     padding: 4px;
   }
   width: 62px;
+}
+.dtc-heightlight {
+  box-shadow: inset 15em 15em #60a5fa;
+  outline: 20px solid #60a5fa;
 }
 
 .left-nav {
