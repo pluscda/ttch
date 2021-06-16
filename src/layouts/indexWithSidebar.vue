@@ -1,6 +1,6 @@
 <template>
   <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7">
-    <div v-for="(item, i) in icons" @click="showMenu($event, item)" :key="i" class="dtc-tab">
+    <div v-for="(item, i) in icons" @click="showMenu($event, item)" :key="i">
       <img :src="item" class="block" width="30" height="27" />
     </div>
   </section>
