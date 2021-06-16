@@ -1,14 +1,6 @@
 <template>
-  <section class="overflow-x-hidden index-position">
-    <main class="grid overflow-x-hidden overflow-y-hidden my-main-part">
-      <aside class="flex flex-col space-y-2 text-white left-nav">
-        <component :is="dtcCurrentCmp"></component>
-      </aside>
-      <transition name="fade"> <router-view></router-view> </transition>
-    </main>
-    <el-backtop target=".index-position" :visibility-height="100" style="color: rgb(58 142 229)">
-      <i-mdi:arrow-up style="font-size: 24px"></i-mdi:arrow-up>
-    </el-backtop>
+  <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7">
+    <img v-for="(item, i) in icons" :src="item" class="block" :key="i" width="30" height="27" />
   </section>
 </template>
 
@@ -18,11 +10,13 @@ import WsNav from "/@/layouts/components/drugWarehouseNav.vue";
 import StoreNav from "./components/drugStoreNav.vue";
 import { leftSideBar$ } from "/@/store";
 
+const icons = ["management.png", "application.png", "mailbox.png", "reviewarea.png", "search.png", "auditstatistics.png"];
 export default {
   name: "indexwidthbar2",
   data() {
     return {
       dtcCurrentCmp: "",
+      icons,
     };
   },
   components: {
@@ -46,19 +40,17 @@ export default {
 
 <style lang="scss" scoped>
 .index-position {
-  max-height: calc(100vh - 70px);
-}
-
-.left-nav {
-  background: darken(#10579b, $amount: 5) !important;
-  min-height: calc(100vh - 70px);
+  max-height: calc(100vh - 80px);
+  background: #00448c 0% 0% no-repeat padding-box !important;
+  min-height: calc(100vh - 80px);
   color: lighten(#10579b, $amount: 55) !important;
   div {
     padding: 4px;
   }
+  width: 62px;
 }
 
-.my-main-part {
-  grid-template-columns: 150px 1fr;
+.left-nav {
+  max-height: calc(100vh - 80px);
 }
 </style>
