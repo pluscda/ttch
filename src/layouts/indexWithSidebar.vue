@@ -1,14 +1,12 @@
 <template>
   <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7">
-    <div v-for="(item, i) in icons" @click="showMenu(item)" :key="i" class="heightlight">
+    <div v-for="(item, i) in icons" @click="showMenu($event, item)" :key="i" class="dtc-tab">
       <img :src="item" class="block" width="30" height="27" />
     </div>
   </section>
 </template>
 
 <script>
-import { leftSideBar$ } from "/@/store";
-
 const icons = ["management.png", "application.png", "mailbox.png", "reviewarea.png", "search.png", "auditstatistics.png"];
 export default {
   name: "indexwidthbar2",
@@ -19,17 +17,15 @@ export default {
     };
   },
   components: {},
-  mounted() {
-    leftSideBar$.subscribe((v) => {
-      if (v == 1) {
-        this.dtcCurrentCmp = BasicNav;
-      } else if (v == 2) {
-        this.dtcCurrentCmp = WsNav;
-      } else if (v == 3) {
-        this.dtcCurrentCmp = StoreNav;
-      }
-    });
+  methods: {
+    showMenu(evt, item) {
+      [...document.querySelectorAll(".dtc-heightlight-tab")].forEach((s) => {
+        s.classList.remove("dtc-heightlight-tab");
+      });
+      evt.target.classList.add("dtc-heightlight-tab");
+    },
   },
+  mounted() {},
 };
 </script>
 
@@ -44,7 +40,7 @@ export default {
   }
   width: 62px;
 }
-.dtc-heightlight {
+.dtc-heightlight-tab {
   box-shadow: inset 15em 15em #60a5fa;
   outline: 20px solid #60a5fa;
 }
