@@ -53,7 +53,7 @@ export default {
       });
       this.$refs[`myref${idx}`].classList.add("dtc-heightlight-tab");
       this.activeTab = idx;
-      this.$refs.fixedMenu.classList.remove("hidden");
+      setTimeout(() => this.$refs.fixedMenu.classList.remove("hidden"));
     },
     showHideMenu(el) {
       const r = el.target.classList.contains("dtc-big-icon-detected");
@@ -62,6 +62,8 @@ export default {
         [...document.querySelectorAll(".dtc-heightlight-tab")].forEach((s) => {
           s.classList.remove("dtc-heightlight-tab");
         });
+      } else {
+        setTimeout(() => this.$refs.fixedMenu.classList.remove("hidden"));
       }
     },
   },
@@ -132,5 +134,9 @@ export default {
 }
 .show-menu {
   transition: all 0.4s ease-in-out;
+}
+.hidden {
+  transform: translate3d(-200px, 0, 0);
+  opacity: 0;
 }
 </style>
