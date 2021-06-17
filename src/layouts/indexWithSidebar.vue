@@ -24,6 +24,7 @@
 
 <script>
 import { fromEvent } from "rxjs";
+import { ElMessage } from "element-plus";
 import { find, repeatWhen, mapTo, startWith, filter, tap } from "rxjs/operators";
 const icons = ["management.png", "application.png", "mailbox.png", "reviewarea.png", "search.png", "auditstatistics.png"];
 const topMenuu = ["系統管理", "電子表單申請", "個人資料區", "審核資料區", "電子表單查詢", "稽核統計作業"];
@@ -48,14 +49,13 @@ export default {
   components: {},
   methods: {
     clickItem(item) {
-      //alert(item);
+      ElMessage.success(item);
     },
     showMenu(idx) {
       this.$refs.fixedMenu.classList.remove("hidden");
       if (this.activeTab === idx || +idx < 0) return;
       const el = document.querySelector(".dtc-heightlight-tab");
       el ? el.classList.remove("dtc-heightlight-tab") : "";
-
       this.activeTab = idx;
       this.$refs[`myref${idx}`].classList.add("dtc-heightlight-tab");
     },
