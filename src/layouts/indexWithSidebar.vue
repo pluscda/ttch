@@ -12,8 +12,8 @@
             <i class="el-icon-arrow-down float-right transform translate-x-4 translate-y-1" v-if="activeTab === i"></i>
           </h5>
           <section class="" :class="activeTab != i ? 'ani-menu' : 'show-menu'">
-            <div v-for="(row, j) in rows[i].split(',')" :key="'row' + j" style="background: #d3dceb" class="sub-menu !py-2">
-              <p style="cursor: pointer" class="ml-6" v-html="row" @click="clickItem(row)"></p>
+            <div @click.stop="clickItem(row)" v-for="(row, j) in rows[i].split(',')" :key="'row' + j" style="background: #d3dceb" class="sub-menu !py-2 cursor-pointer">
+              <p class="ml-6" v-html="row"></p>
             </div>
           </section>
         </h4>
@@ -50,6 +50,7 @@ export default {
   methods: {
     clickItem(item) {
       ElMessage.success(item);
+      setTimeout(() => this.$refs.fixedMenu.classList.add("hidden"), 300);
     },
     showMenu(idx) {
       this.$refs.fixedMenu.classList.remove("hidden");
@@ -57,12 +58,13 @@ export default {
       const el = document.querySelector(".dtc-heightlight-tab");
       el ? el.classList.remove("dtc-heightlight-tab") : "";
       this.activeTab = idx;
-      this.$refs[`myref${idx}`].classList.add("dtc-heightlight-tab");
+      this.$refs[`myref${idx}`]?.classList.add("dtc-heightlight-tab");
     },
     showHideMenu() {
       this.$refs.fixedMenu.classList.add("hidden");
       const el = document.querySelector(".dtc-heightlight-tab");
       el ? el.classList.remove("dtc-heightlight-tab") : "";
+      this.activeTab = -1;
     },
   },
   mounted() {
