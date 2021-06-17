@@ -128,6 +128,7 @@ export default {
 .ani-menu {
   opacity: 0;
   height: 0px;
+  transform: translate3d(0, 100px, 0);
 }
 .show-menu {
   transition: all 0.4s ease-in-out;
