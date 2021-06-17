@@ -52,9 +52,10 @@ export default {
     },
     showMenu(idx) {
       this.$refs.fixedMenu.classList.remove("hidden");
+      if (this.activeTab === idx || +idx < 0) return;
       const el = document.querySelector(".dtc-heightlight-tab");
       el ? el.classList.remove("dtc-heightlight-tab") : "";
-      if (this.activeTab === idx || +idx < 0) return;
+
       this.activeTab = idx;
       this.$refs[`myref${idx}`].classList.add("dtc-heightlight-tab");
     },
