@@ -1,19 +1,19 @@
 <template>
-  <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7 dtc-big-icon-detected">
-    <div v-for="(item, i) in icons" @click="showMenu(i)" :key="i" :ref="'myref' + i" class="dtc-big-icon-detected cursor-pointer">
-      <img :src="item" class="block dtc-big-icon-detected" width="30" height="27" />
+  <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7" @mouseover.stop="showMenu(-1)">
+    <div v-for="(item, i) in icons" @mouseover.stop="showMenu(i)" :key="i" :ref="'myref' + i" class="cursor-pointer">
+      <img :src="item" class="block" width="30" height="27" />
     </div>
-    <nav class="left-fixed-menu hidden dtc-big-icon-detected" ref="fixedMenu">
-      <div v-for="(item, i) in topMenuu" :key="i" class="mb-4 dtc-big-icon-detected relative" :class="activeTab === i ? 'dtc-line' : ''">
-        <h4 class="dtc-big-icon-detected">
-          <h5 style="cursor: pointer" @click="showMenu(i)" class="dtc-big-icon-detected">
+    <nav class="left-fixed-menu hidden" ref="fixedMenu" @mouseover="showMenu(-1)">
+      <div v-for="(item, i) in topMenuu" :key="i" class="mb-4 relative" :class="activeTab === i ? 'dtc-line' : ''">
+        <h4 class="">
+          <h5 style="cursor: pointer" @click.stop="showMenu(i)" class="">
             {{ item }}
-            <i class="el-icon-arrow-right float-right transform translate-x-4 dtc-big-icon-detected" v-if="activeTab !== i"></i>
-            <i class="el-icon-arrow-down float-right transform translate-x-4 translate-y-1 dtc-big-icon-detected" v-if="activeTab === i"></i>
+            <i class="el-icon-arrow-right float-right transform translate-x-4" v-if="activeTab !== i"></i>
+            <i class="el-icon-arrow-down float-right transform translate-x-4 translate-y-1" v-if="activeTab === i"></i>
           </h5>
-          <section class="dtc-big-icon-detected" :class="activeTab != i ? 'ani-menu' : 'show-menu'">
-            <div v-for="(row, j) in rows[i].split(',')" :key="'row' + j" style="background: #d3dceb" class="sub-menu !py-2 dtc-big-icon-detected">
-              <p style="cursor: pointer" class="ml-6 dtc-big-icon-detected" v-html="row"></p>
+          <section class="" :class="activeTab != i ? 'ani-menu' : 'show-menu'">
+            <div v-for="(row, j) in rows[i].split(',')" :key="'row' + j" style="background: #d3dceb" class="sub-menu !py-2">
+              <p style="cursor: pointer" class="ml-6" v-html="row"></p>
             </div>
           </section>
         </h4>
@@ -48,23 +48,17 @@ export default {
   components: {},
   methods: {
     showMenu(idx) {
-      [...document.querySelectorAll(".dtc-heightlight-tab")].forEach((s) => {
-        s.classList.remove("dtc-heightlight-tab");
-      });
-      this.$refs[`myref${idx}`].classList.add("dtc-heightlight-tab");
+      this.$refs.fixedMenu.classList.remove("hidden");
+      const el = document.querySelector(".dtc-heightlight-tab");
+      el ? el.classList.remove("dtc-heightlight-tab") : "";
+      if (this.activeTab === idx || +idx < 0) return;
       this.activeTab = idx;
-      setTimeout(() => this.$refs.fixedMenu.classList.remove("hidden"));
+      this.$refs[`myref${idx}`].classList.add("dtc-heightlight-tab");
     },
     showHideMenu(el) {
-      const r = el.target.classList.contains("dtc-big-icon-detected");
-      if (!r) {
-        this.$refs.fixedMenu.classList.add("hidden");
-        [...document.querySelectorAll(".dtc-heightlight-tab")].forEach((s) => {
-          s.classList.remove("dtc-heightlight-tab");
-        });
-      } else {
-        setTimeout(() => this.$refs.fixedMenu.classList.remove("hidden"));
-      }
+      this.$refs.fixedMenu.classList.add("hidden");
+      const el = document.querySelector(".dtc-heightlight-tab");
+      el ? el.classList.remove("dtc-heightlight-tab") : "";
     },
   },
   mounted() {
