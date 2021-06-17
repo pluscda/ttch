@@ -50,7 +50,9 @@ export default {
   methods: {
     clickItem(item) {
       ElMessage.success(item);
-      setTimeout(() => this.$refs.fixedMenu.classList.add("hidden"), 300);
+      setTimeout(() => {
+        this.$refs.fixedMenu.classList.add("hidden");
+      }, 300);
     },
     showMenu(idx) {
       this.$refs.fixedMenu.classList.remove("hidden");
