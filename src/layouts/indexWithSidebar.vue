@@ -13,7 +13,7 @@
           </h5>
           <section class="" :class="activeTab != i ? 'ani-menu' : 'show-menu'">
             <div v-for="(row, j) in rows[i].split(',')" :key="'row' + j" style="background: #d3dceb" class="sub-menu !py-2">
-              <p style="cursor: pointer" class="ml-6" v-html="row"></p>
+              <p style="cursor: pointer" class="ml-6" v-html="row" @click="clickItem(row)"></p>
             </div>
           </section>
         </h4>
@@ -47,6 +47,9 @@ export default {
   },
   components: {},
   methods: {
+    clickItem(item) {
+      //alert(item);
+    },
     showMenu(idx) {
       this.$refs.fixedMenu.classList.remove("hidden");
       const el = document.querySelector(".dtc-heightlight-tab");
@@ -55,7 +58,7 @@ export default {
       this.activeTab = idx;
       this.$refs[`myref${idx}`].classList.add("dtc-heightlight-tab");
     },
-    showHideMenu(el) {
+    showHideMenu() {
       this.$refs.fixedMenu.classList.add("hidden");
       const el = document.querySelector(".dtc-heightlight-tab");
       el ? el.classList.remove("dtc-heightlight-tab") : "";
