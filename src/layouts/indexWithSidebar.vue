@@ -117,6 +117,18 @@ export default {
           this.myCmp = defineAsyncComponent(() => import("cps/FolderInsepctDone.vue"));
           break;
       }
+      if (item.trim() == "電子表單通用查詢作業") {
+        this.myCmp = defineAsyncComponent(() => import("cps/DigiFormInquery.vue"));
+      }
+      //稽核統計作業: 交易歷程,一般統計查詢
+      switch (item.trim()) {
+        case "交易歷程":
+          this.myCmp = defineAsyncComponent(() => import("cps/Transection.vue"));
+          break;
+        case "一般統計查詢":
+          this.myCmp = defineAsyncComponent(() => import("cps/StatInquery.vue"));
+          break;
+      }
     },
     clickItem(item) {
       ElMessage.success(item);
