@@ -1,28 +1,41 @@
 <template>
-  <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7" @mouseover.stop="showMenu(-1)">
-    <div v-for="(item, i) in icons" @mouseover.stop="showMenu(i)" :key="i" :ref="'myref' + i" class="cursor-pointer">
-      <img :src="item" class="block" width="30" height="27" />
-    </div>
-    <nav class="left-fixed-menu hidden" ref="fixedMenu" @mouseover="showMenu(-1)">
-      <div v-for="(item, i) in topMenuu" :key="i" class="mb-4 relative" :class="activeTab === i ? 'dtc-line' : ''">
-        <h4 class="">
-          <h5 style="cursor: pointer" @click.stop="showMenu(i)" class="">
-            {{ item }}
-            <i class="el-icon-arrow-right float-right transform translate-x-4" v-if="activeTab !== i"></i>
-            <i class="el-icon-arrow-down float-right transform translate-x-4 translate-y-1" v-if="activeTab === i"></i>
-          </h5>
-          <section class="" :class="activeTab != i ? 'ani-menu' : 'show-menu'">
-            <div @click.stop="clickItem(row)" v-for="(row, j) in rows[i].split(',')" :key="'row' + j" style="background: #d3dceb" class="sub-menu !py-2 cursor-pointer">
-              <p class="ml-6" v-html="row"></p>
-            </div>
-          </section>
-        </h4>
+  <nav class="left-right-sec">
+    <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7" @mouseover.stop="showMenu(-1)">
+      <div v-for="(item, i) in icons" @mouseover.stop="showMenu(i)" :key="i" :ref="'myref' + i" class="cursor-pointer">
+        <img :src="item" class="block" width="30" height="27" />
       </div>
-    </nav>
-  </section>
+      <nav class="left-fixed-menu hidden" ref="fixedMenu" @mouseover="showMenu(-1)">
+        <div v-for="(item, i) in topMenuu" :key="i" class="mb-4 relative" :class="activeTab === i ? 'dtc-line' : ''">
+          <h4 class="">
+            <h5 style="cursor: pointer" @click.stop="showMenu(i)" class="">
+              {{ item }}
+              <i class="el-icon-arrow-right float-right transform translate-x-4" v-if="activeTab !== i"></i>
+              <i class="el-icon-arrow-down float-right transform translate-x-4 translate-y-1" v-if="activeTab === i"></i>
+            </h5>
+            <section class="" :class="activeTab != i ? 'ani-menu' : 'show-menu'">
+              <div @click.stop="clickItem(row)" v-for="(row, j) in rows[i].split(',')" :key="'row' + j" style="background: #d3dceb" class="sub-menu !py-2 cursor-pointer">
+                <p class="ml-6" v-html="row"></p>
+              </div>
+            </section>
+          </h4>
+        </div>
+      </nav>
+    </section>
+    <main>
+      <suspense>
+        <template #default>
+          <component :is="myCmp"></component>
+        </template>
+        <template #fallback>
+          <div>Loading...</div>
+        </template>
+      </suspense>
+    </main>
+  </nav>
 </template>
 
 <script>
+import { defineAsyncComponent } from "vue";
 import { fromEvent } from "rxjs";
 import { ElMessage } from "element-plus";
 import { find, repeatWhen, mapTo, startWith, filter, tap } from "rxjs/operators";
@@ -44,12 +57,58 @@ export default {
       topMenuu,
       rows,
       activeTab: -1,
+      myCmp: "",
     };
   },
   components: {},
   methods: {
+    updatePage(item) {
+      //系統管理;`帳號管理, 組織單位管理, 職稱管理,角色管理,系統功能管理,電子表單設定,簽核片語設定`
+      switch (item.trim()) {
+        case "帳號管理":
+          this.myCmp = defineAsyncComponent(() => import("cps/Account.vue"));
+          break;
+        case "組織單位管理":
+          this.myCmp = defineAsyncComponent(() => import("cps/BusinessUnit.vue"));
+          break;
+        case "職稱管理":
+          this.myCmp = defineAsyncComponent(() => import("cps/Player.vue"));
+          break;
+        case "角色管理":
+          this.myCmp = defineAsyncComponent(() => import("cps/Role.vue"));
+          break;
+        case "系統功能管理":
+          this.myCmp = defineAsyncComponent(() => import("cps/SysCtrl.vue"));
+          break;
+        case "電子表單設定":
+          this.myCmp = defineAsyncComponent(() => import("cps/DigitForm.vue"));
+          break;
+        case "簽核片語設定":
+          this.myCmp = defineAsyncComponent(() => import("cps/SingPhrase.vue"));
+          break;
+      }
+      //電子表單申請:生物安全等級實驗室證明, 教育訓練證明書, 送審證明書,基因重組實驗申請書,生物材料申請書
+      switch (item.trim()) {
+        case "生物安全等級實驗室證明":
+          this.myCmp = defineAsyncComponent(() => import("cps/BioSafeLab.vue"));
+          break;
+        case "教育訓練證明書":
+          this.myCmp = defineAsyncComponent(() => import("cps/Education.vue"));
+          break;
+        case "送審證明書":
+          this.myCmp = defineAsyncComponent(() => import("cps/Bgc.vue"));
+          break;
+        case "基因重組實驗申請書":
+          this.myCmp = defineAsyncComponent(() => import("cps/DnaLab.vue"));
+          break;
+        case "生物材料申請":
+          this.myCmp = defineAsyncComponent(() => import("cps/BioApply.vue"));
+          break;
+      }
+    },
     clickItem(item) {
       ElMessage.success(item);
+      this.updatePage(item);
       setTimeout(() => {
         this.$refs.fixedMenu.classList.add("hidden");
       }, 300);
@@ -82,6 +141,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.left-right-sec {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 10px;
+  color: black;
+}
 .index-position {
   max-height: calc(100vh - 80px);
   background: #00448c 0% 0% no-repeat padding-box !important;
