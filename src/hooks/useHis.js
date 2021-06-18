@@ -1,4 +1,4 @@
-import { reactive, ref } from "vue";
+import { reactive } from "vue";
 import axios from "utils/request";
 import queryString from "qs";
 import { forkJoin, of } from 'rxjs';
@@ -6,7 +6,7 @@ import { catchError } from "rxjs/operators";
 import { ElMessage } from "element-plus";
 
 
-export function useList(url,__limit__) {
+export function useList(url,__limit__, extra) {
   const init =  { 
     loading: true, 
     list: [], 
@@ -32,23 +32,36 @@ export function useList(url,__limit__) {
     state.loading = true;
     const {limit, page, sort} =  state.listQuery;
     let queryObj = {
-      _limit : limit,
-      _start: page > 1 ? (page - 1) * limit : 0,
+      limit : limit,
+      pageStart: page > 1 ? (page - 1) * limit : 0,
     }
-    sort.length ? queryObj._sort = sort.join(",") : '';
-    let qs = queryString.stringify(queryObj) + "&" + state.listQuery.filter;
-   
+    if(state.listQuery.filter){
+      queryObj.pageStart = 0;
+      state.listQuery.page = 1;
+    }
+    sort.length ? queryObj.sort = sort.join(",") : '';
+    const str =  queryString.stringify(queryObj);
+    let qs = state.listQuery.filter? str + "&" + state.listQuery.filter : str ;
+    if(extra){
+      qs += extra;
+    }
     forkJoin(
       {
-        total: axios.get(`${url}/count?` + qs ),
         data: axios.get(`${url}?` + qs)
       }
     ).pipe( catchError( error => {
       //ElMessage.error(`AJAX ${url} get list fail!!`);
-      of({total:0, data:[]})
-    })).subscribe( ({total, data}) => {
-       state.total = total;
-       state.list = data;
+      of({data:{count:4, entry:[{},{},{},{}]}})
+    })).subscribe( ({data}) => {
+       const  {count, entry} = data;
+       state.total = count;
+       state.list = entry;
+       state.loading = false;
+      
+    }, () => {
+       const  {count, entry} = {count:4, entry:[{},{},{},{}]}
+       state.total = count;
+       state.list = entry;
        state.loading = false;
     })
   }
@@ -64,9 +77,9 @@ export function useList(url,__limit__) {
     //    ElMessage.error(`AJAX ${url} get item detail faill!!`);
     // }
   }
-  async function removeItem(item){
+  async function removeItem(qs){
     try{
-      await axios.delete(`${url}/${item.id}`);
+      await axios.delete(`${url}?` + qs);
       getList();
     }catch(e){
        ElMessage.error(`AJAX ${url} delete item faill!!`);
@@ -96,28 +109,3 @@ export function useList(url,__limit__) {
   return { state, getList, sort, clearFilters,removeItem,getItemDetail,twTime};
 }
 
-const defaultData = {
-  name: "",
-  age: undefined,
-};
-
-export function useItem(isEdit, id) {
-  const model = ref(Object.assign({}, defaultData));
-  const updateUser = () => {
-    return axios({
-      url: "/updateUser",
-      method: "post",
-      data: model.value,
-    });
-  };
-
-  const addUser = () => {
-    return axios({
-      url: "/addUser",
-      method: "post",
-      data: model.value,
-    });
-  };
-
-  return { model, updateUser, addUser };
-}

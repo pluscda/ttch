@@ -63,7 +63,7 @@
       v-for="(item, i) in list"
       :key="i"
       style="animation-duration: 0.3s"
-      :style="i % 2 == 0 ? `animation-duration:${(i + 1) * 0.1}s ;background-color: #F5F5F5;` : `animation-duration:${(i + 1) * 0.1}s;background-color: #E0E0E0;`"
+      :style="i % 2 == 0 ? `animation-duration:${(i + 1) * 0.1}s ;background-color: white;` : `animation-duration:${(i + 1) * 0.1}s;background-color: #F2F7FF;`"
     >
       <div class="flex flex-none space-x-2">
         <Button label="編輯" class="p-button-sm" @click.stop="editItem(item)" />
