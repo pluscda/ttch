@@ -135,7 +135,7 @@ export default {
     },
     showMenu(idx) {
       this.$refs.fixedMenu.classList.remove("hidden");
-      this.$refs.mainRef.style = `transform: translate3d(270px, 0, 0)`;
+      this.$refs.mainRef.style = `transform: translate3d(250px, 0, 0)`;
       if (this.activeTab === idx || +idx < 0) return;
       const el = document.querySelector(".dtc-heightlight-tab");
       el ? el.classList.remove("dtc-heightlight-tab") : "";
