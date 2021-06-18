@@ -1,17 +1,23 @@
 <template>
   <section class="management">
     <header class="dtc-page-header grid dtc-page-header__grid pr-2">
-      <div>藥品資料維護</div>
+      <div>個人資料區 / 申請資料匣</div>
     </header>
     <nav class="ml-1 dtc-search-filters mt-4" style="margin-bottom: 1.5rem !important">
-      <DtxInputGroup prepend="院內代碼">
-        <el-input placeholder="搜尋院內代碼" v-model="searchHospitalId" />
+      <DtxInputGroup prepend="表單狀態">
+        <el-select filterable v-model="status" placeholder="請選擇" class="border-l-0">
+          <el-option v-for="item in []" :key="item.value" :label="item.text" :value="item.value"> </el-option>
+        </el-select>
       </DtxInputGroup>
-      <DtxInputGroup prepend="藥品名稱">
-        <el-input placeholder="搜尋中英文藥品名稱" v-model="searchDrugName" />
+      <DtxInputGroup prepend="表單類別">
+        <el-select filterable v-model="status" placeholder="請選擇" class="border-l-0">
+          <el-option v-for="item in []" :key="item.value" :label="item.text" :value="item.value"> </el-option>
+        </el-select>
       </DtxInputGroup>
-      <DtxInputGroup prepend="藥品學名">
-        <el-input placeholder="搜尋藥品學名" v-model="searchDrugName" />
+      <DtxInputGroup prepend="申請單號">
+        <el-select filterable v-model="status" placeholder="請選擇" class="border-l-0">
+          <el-option v-for="item in []" :key="item.value" :label="item.text" :value="item.value"> </el-option>
+        </el-select>
       </DtxInputGroup>
       <DtxInputGroup prepend="藥商名稱">
         <el-input placeholder="搜尋藥商名稱" v-model="searchDrgMaker" />
