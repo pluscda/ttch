@@ -59,7 +59,7 @@ export function useList(url,__limit__, extra) {
        state.loading = false;
       
     }, () => {
-       const  {count, entry} = {count:4, entry:[{},{},{},{}]}
+       const  {count, entry} = {count:10, entry:[{},{},{},{},{},{},{},{},{},{}]}
        state.total = count;
        state.list = entry;
        state.loading = false;
