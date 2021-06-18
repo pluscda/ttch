@@ -135,12 +135,12 @@ export default {
     },
     showMenu(idx) {
       this.$refs.fixedMenu.classList.remove("hidden");
+      this.$refs.mainRef.style = `transform: translate3d(270px, 0, 0)`;
       if (this.activeTab === idx || +idx < 0) return;
       const el = document.querySelector(".dtc-heightlight-tab");
       el ? el.classList.remove("dtc-heightlight-tab") : "";
       this.activeTab = idx;
       this.$refs[`myref${idx}`]?.classList.add("dtc-heightlight-tab");
-      this.$refs.mainRef.style = `transform: translate3d(312px, 0, 0)`;
     },
     showHideMenu() {
       this.$refs.fixedMenu.classList.add("hidden");
@@ -225,7 +225,7 @@ export default {
   transition: all 0.4s ease-in-out;
 }
 .hidden {
-  transform: translate3d(-200px, 0, 0);
+  transform: translate3d(-400px, 0, 0);
   opacity: 0;
 }
 .main-sec {
