@@ -53,6 +53,9 @@ export default {
       setTimeout(() => {
         this.$refs.fixedMenu.classList.add("hidden");
       }, 300);
+      setTimeout(() => {
+        this.$refs.fixedMenu.classList.add("hidden");
+      }, 500);
     },
     showMenu(idx) {
       this.$refs.fixedMenu.classList.remove("hidden");
