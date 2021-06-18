@@ -80,6 +80,10 @@
       <div :title="item.chDrgEnName">{{ item.chDrgEnName || "暫無資料" }}</div>
       <div>{{ item.chDrgAlias || "暫無資料" }}</div>
       <div>{{ item.chDrgMakerName || "暫無資料" }}</div>
+      <div :title="item.chDrgCnName">{{ item.chDrgCnName || "暫無資料" }}</div>
+      <div :title="item.chDrgEnName">{{ item.chDrgEnName || "暫無資料" }}</div>
+      <div>{{ item.chDrgAlias || "暫無資料" }}</div>
+      <div>{{ item.chDrgMakerName || "暫無資料" }}</div>
     </main>
     <!-- 分頁 -->
     <pagination v-show="total > 0" :total="total" v-model:page="listQuery.page" v-model:limit="listQuery.limit" @pagination="getList"></pagination>
@@ -96,12 +100,16 @@ import { useList } from "/@/hooks/useHis.js";
 import { pharmacyTab$ } from "/@/store";
 
 let headers = [
-  { name: "健保代碼", key: "chDrgId", sortDesc: null },
-  { name: "院內代碼", key: "chHospitalId", sortDesc: null },
-  { name: "中文藥名", key: "chDrgCnName", sortDesc: null },
-  { name: "英文藥名", key: "chDrgEnName", sortDesc: null },
-  { name: "藥品學名", key: "chDrgAlias", sortDesc: null },
-  { name: "藥商名稱", key: "chDrgMakerName", sortDesc: null },
+  { name: "表單類別", key: "chDrgId", sortDesc: null },
+  { name: "申請單號", key: "chHospitalId", sortDesc: null },
+  { name: "狀態", key: "chDrgCnName", sortDesc: null },
+  { name: "證明書", key: "chDrgEnName", sortDesc: null },
+  { name: "同意書", key: "chDrgAlias", sortDesc: null },
+  { name: "附件", key: "chDrgMakerName", sortDesc: null },
+  { name: "申請人", key: "chDrgCnName2", sortDesc: null },
+  { name: "申請日期", key: "chDrgEnName2", sortDesc: null },
+  { name: "簽核日期", key: "chDrgAlias2", sortDesc: null },
+  { name: "結案日期", key: "chDrgMakerName2", sortDesc: null },
 ];
 
 export default {
@@ -168,9 +176,7 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-template-columns {
-  width: calc(100vw - 162px) !important;
-  max-width: calc(100vw - 162px) !important;
-  grid-template-columns: 100px 140px 120px repeat(2, 250px) 120px 1fr;
+  grid-template-columns: 150px repeat(9, 120px) 1fr;
 }
 .management {
   position: relative;

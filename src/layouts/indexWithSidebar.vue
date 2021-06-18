@@ -230,5 +230,6 @@ export default {
 }
 .main-sec {
   transition: all 0.3s ease-in-out;
+  max-width: calc(100vw - 63px);
 }
 </style>
