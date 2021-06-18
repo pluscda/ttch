@@ -105,6 +105,18 @@ export default {
           this.myCmp = defineAsyncComponent(() => import("cps/BioApply.vue"));
           break;
       }
+      if (item.trim() == "申請資料匣") {
+        this.myCmp = defineAsyncComponent(() => import("cps/FolderApply.vue"));
+      }
+      //審核資料區: 待審核資料匣,已審核資料匣
+      switch (item.trim()) {
+        case "待審核資料匣":
+          this.myCmp = defineAsyncComponent(() => import("cps/FolderInspectWait.vue"));
+          break;
+        case "已審核資料匣":
+          this.myCmp = defineAsyncComponent(() => import("cps/FolderInsepctDone.vue"));
+          break;
+      }
     },
     clickItem(item) {
       ElMessage.success(item);
