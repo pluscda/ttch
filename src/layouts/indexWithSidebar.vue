@@ -201,7 +201,7 @@ export default {
   color: #0d2868;
   padding: 15px;
   overflow-y: auto;
-  transition: all 0.4s ease-in;
+  transition: all 0.2s ease-in;
 }
 .sub-menu {
   box-shadow: 20px 0px 0 #d3dceb, -20px 0px 0 #d3dceb;
