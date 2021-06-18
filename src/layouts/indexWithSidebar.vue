@@ -57,7 +57,7 @@ export default {
       topMenuu,
       rows,
       activeTab: -1,
-      myCmp: "",
+      myCmp: defineAsyncComponent(() => import("cps/FolderApply.vue")),
     };
   },
   components: {},
