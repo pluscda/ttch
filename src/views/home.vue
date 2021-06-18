@@ -80,12 +80,6 @@
   </section>
 </template>
 <script>
-import Set1 from "/@/components/set1.vue";
-import Set2 from "/@/components/set2.vue";
-import Set3 from "/@/components/set3.vue";
-import Set4 from "/@/components/set4.vue";
-import Set5 from "/@/components/set5.vue";
-import Set6 from "/@/components/set6.vue";
 export default {
   data() {
     return {
@@ -94,14 +88,7 @@ export default {
       checked: true,
     };
   },
-  components: {
-    Set1,
-    Set2,
-    Set3,
-    Set4,
-    Set5,
-    Set6,
-  },
+  components: {},
 };
 </script>
 
