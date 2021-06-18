@@ -1,5 +1,5 @@
 <template>
-  <div>DNa;vue</div>
+  <div>DNA.vue</div>
 </template>
 
 <script>

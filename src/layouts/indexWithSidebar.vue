@@ -41,8 +41,8 @@ import { ElMessage } from "element-plus";
 import { find, repeatWhen, mapTo, startWith, filter, tap } from "rxjs/operators";
 const icons = ["management.png", "application.png", "mailbox.png", "reviewarea.png", "search.png", "auditstatistics.png"];
 const topMenuu = ["系統管理", "電子表單申請", "個人資料區", "審核資料區", "電子表單查詢", "稽核統計作業"];
-const row0 = `帳號管理, 組織單位管理, 職稱管理,角色管理,系統功能管理,電子表單設定,簽核片語設定`;
-const row1 = `生物安全等級實驗室證明, 教育訓練證明書, 送審證明書,基因重組實驗申請書,生物材料申請書`;
+const row0 = `帳號管理,組織單位管理,職稱管理,角色管理,系統功能管理,電子表單設定,簽核片語設定`;
+const row1 = `生物安全等級實驗室證明,教育訓練證明書,送審證明書,基因重組實驗申請書,生物材料申請書`;
 const row2 = `申請資料匣`;
 const row3 = `待審核資料匣,已審核資料匣`;
 const row4 = `電子表單通用查詢作業`;
@@ -96,12 +96,12 @@ export default {
           this.myCmp = defineAsyncComponent(() => import("cps/Education.vue"));
           break;
         case "送審證明書":
-          this.myCmp = defineAsyncComponent(() => import("cps/Bgc.vue"));
+          this.myCmp = defineAsyncComponent(() => import("cps/BackgroundCheck.vue"));
           break;
         case "基因重組實驗申請書":
           this.myCmp = defineAsyncComponent(() => import("cps/DnaLab.vue"));
           break;
-        case "生物材料申請":
+        case "生物材料申請書":
           this.myCmp = defineAsyncComponent(() => import("cps/BioApply.vue"));
           break;
       }
@@ -131,14 +131,14 @@ export default {
       }
     },
     clickItem(item) {
-      ElMessage.success(item);
+      //ElMessage.success(item);
       this.updatePage(item);
-      setTimeout(() => {
-        this.$refs.fixedMenu.classList.add("hidden");
-      }, 300);
-      setTimeout(() => {
-        this.$refs.fixedMenu.classList.add("hidden");
-      }, 500);
+      // setTimeout(() => {
+      //   this.$refs.fixedMenu.classList.add("hidden");
+      // }, 300);
+      // setTimeout(() => {
+      //   this.$refs.fixedMenu.classList.add("hidden");
+      // }, 500);
     },
     showMenu(idx) {
       this.$refs.fixedMenu.classList.remove("hidden");

@@ -1,5 +1,5 @@
 <template>
-  <div>Bgc.vue</div>
+  <div>BackgroundCheck</div>
 </template>
 
 <script>
