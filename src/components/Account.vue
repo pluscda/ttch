@@ -1,5 +1,5 @@
 <template>
-  <div>Account</div>
+  <div class="bg-gray-500 w-full h-full">Account</div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="left-right-sec">
+  <nav class="left-right-sec pr-1">
     <section class="overflow-x-hidden index-position flex flex-col space-y-12 items-center pt-7" @mouseover.stop="showMenu(-1)">
       <div v-for="(item, i) in icons" @mouseover.stop="showMenu(i)" :key="i" :ref="'myref' + i" class="cursor-pointer">
         <img :src="item" class="block" width="30" height="27" />
@@ -21,7 +21,7 @@
         </div>
       </nav>
     </section>
-    <main>
+    <main ref="mainRef" class="main-sec">
       <suspense>
         <template #default>
           <component :is="myCmp"></component>
@@ -131,14 +131,7 @@ export default {
       }
     },
     clickItem(item) {
-      //ElMessage.success(item);
       this.updatePage(item);
-      // setTimeout(() => {
-      //   this.$refs.fixedMenu.classList.add("hidden");
-      // }, 300);
-      // setTimeout(() => {
-      //   this.$refs.fixedMenu.classList.add("hidden");
-      // }, 500);
     },
     showMenu(idx) {
       this.$refs.fixedMenu.classList.remove("hidden");
@@ -147,12 +140,14 @@ export default {
       el ? el.classList.remove("dtc-heightlight-tab") : "";
       this.activeTab = idx;
       this.$refs[`myref${idx}`]?.classList.add("dtc-heightlight-tab");
+      this.$refs.mainRef.style = `transform: translate3d(312px, 0, 0)`;
     },
     showHideMenu() {
       this.$refs.fixedMenu.classList.add("hidden");
       const el = document.querySelector(".dtc-heightlight-tab");
       el ? el.classList.remove("dtc-heightlight-tab") : "";
       this.activeTab = -1;
+      this.$refs.mainRef.style = `transform: translate3d(0, 0, 0)`;
     },
   },
   mounted() {
@@ -168,7 +163,7 @@ export default {
 .left-right-sec {
   display: grid;
   grid-template-columns: 62px 1fr;
-  gap: 10px;
+  gap: 2px;
   color: black;
 }
 .index-position {
@@ -232,5 +227,8 @@ export default {
 .hidden {
   transform: translate3d(-200px, 0, 0);
   opacity: 0;
+}
+.main-sec {
+  transition: all 0.3s ease-in-out;
 }
 </style>
