@@ -42,7 +42,7 @@
       <Button label="清除查詢" class="p-button-secondary" icon="pi pi-undo" @click="cleanFilter" />
     </nav>
 
-    <header data-msg="" class="my-title relative dtc-grid-grumanagement-header dtc-grid-header dtc-grid-header__divs dtc-template-columns mx-1">
+    <header class="my-title relative dtc-grid-grumanagement-header dtc-grid-header dtc-grid-header__divs grid-cols-[150px,repeat(9,120px),1fr] mx-1">
       <!-- <div title="" class="title-word1">採購單(註1)</div> -->
       <div>操作</div>
       <div v-for="(item, i) in headers" :key="i" @click="sort(headers, item)" :title="item.name">
