@@ -1,7 +1,7 @@
 <template>
   <section class="management">
     <header class="dtc-page-header grid dtc-page-header__grid pr-2">
-      <div>電子表單申請 / 生物安全等級實驗室證明</div>
+      <div>電子表單申請 / 生物安全等級實驗室證明書</div>
     </header>
     <nav class="ml-1 dtc-search-filters mt-4">
       <DtxInputGroup prepend="表單狀態">
