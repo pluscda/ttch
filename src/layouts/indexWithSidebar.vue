@@ -222,7 +222,7 @@ export default {
   transform: translate3d(0, 100px, 0);
 }
 .show-menu {
-  transition: all 0.4s ease-in-out;
+  transition: all 0.17s ease-in-out;
 }
 .hidden {
   transform: translate3d(-400px, 0, 0);
