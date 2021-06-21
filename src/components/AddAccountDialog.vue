@@ -1,10 +1,8 @@
 <template>
   <div class="flex flex-col relative">
-    <header class="dlg-header">abc</header>
-    <header class="modal-header" id="modal-header">
+    <header class="dlg-header">
       <slot name="header">Header goes here ...</slot>
     </header>
-
     <section class="modal-body" id="modal-body">
       <slot name="body">Body goes here ...</slot>
     </section>
