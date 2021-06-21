@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col relative">
-    <header class="dlg-header">
+    <i class="el-icon-close text-xl text-white block w-[16px] h-[16px] absolute right-2 top-2 z-10 cursor-pointer"></i>
+    <header class="dlg-header z-9">
       <slot name="header">Header goes here ...</slot>
     </header>
     <section class="modal-body" id="modal-body">
@@ -25,7 +26,6 @@ export default {};
   left: 0px;
   background: blue;
   width: 100%;
-  display: block;
   color: white;
   height: 2rem;
   border-top-left-radius: 1rem;
@@ -33,5 +33,6 @@ export default {};
   line-height: 2rem;
   text-align: left;
   padding-left: 10px;
+  display: grid;
 }
 </style>
