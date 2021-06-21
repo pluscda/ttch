@@ -44,7 +44,10 @@
     </template>
 
     <template v-slot:footer>
-      <p>H22ere's some contact info</p>
+      <div class="flex justify-end space-x-4 w-[800px]">
+        <Button>新增帳號</Button>
+        <Button class="p-button-secondary">取消新增</Button>
+      </div>
     </template>
   </Dlg>
 </template>
