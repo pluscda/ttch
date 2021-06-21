@@ -1,10 +1,10 @@
 <template>
   <Dlg>
-    <template v-slot:header>
+    <template #header>
       <h1>新增職稱</h1>
     </template>
 
-    <template v-slot:body>
+    <template #body>
       <main class="flex flex-col space-y-3">
         <DtxInputGroup prepend="職稱-ID" labelWidth="168">
           <el-input placeholder="請輸入職稱-ID"></el-input>
@@ -15,7 +15,7 @@
       </main>
     </template>
 
-    <template v-slot:footer>
+    <template #footer>
       <div class="flex justify-end space-x-4 w-[500px]">
         <Button>新增職稱</Button>
         <Button class="p-button-secondary">取消變更</Button>
