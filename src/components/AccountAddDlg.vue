@@ -69,7 +69,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.main-body {
-}
-</style>
+<style lang="scss" scoped></style>
