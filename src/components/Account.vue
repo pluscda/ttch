@@ -79,7 +79,7 @@ import { useRouter } from "vue-router";
 import Pagination from "cps/Pagination.vue";
 import { useList } from "/@/hooks/useHis.js";
 import { pharmacyTab$ } from "/@/store";
-import AddAccountDlg from "./AddAccountDlg.vue";
+import AddAccountDlg from "./Dlg.vue";
 import { closeDlg$ } from "/@/store";
 
 let headers = [
