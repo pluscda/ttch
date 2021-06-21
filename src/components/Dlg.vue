@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col relative">
+  <div class="flex flex-col relative animate__fadeInDown">
     <i class="el-icon-close text-xl text-white block w-[16px] h-[16px] absolute right-2 top-2 z-10 cursor-pointer" @click="closeDlg$.next('')"></i>
     <header class="dlg-header z-9">
       <slot name="header">Header goes here ...</slot>
