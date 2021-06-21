@@ -2,7 +2,7 @@
   <section class="management">
     <teleport to="#ttModal">
       <div v-if="modalOpen" class="tt-modal">
-        <AddAccountDlg @click.stop=""></AddAccountDlg>
+        <AccountAddDlg @click.stop=""> </AccountAddDlg>
       </div>
     </teleport>
     <header class="dtc-page-header">
@@ -79,7 +79,7 @@ import { useRouter } from "vue-router";
 import Pagination from "cps/Pagination.vue";
 import { useList } from "/@/hooks/useHis.js";
 import { pharmacyTab$ } from "/@/store";
-import AddAccountDlg from "./Dlg.vue";
+import AccountAddDlg from "./AccountAddDlg.vue";
 import { closeDlg$ } from "/@/store";
 
 let headers = [
@@ -95,7 +95,7 @@ export default {
   name: "drugmanagementaddlist",
   components: {
     Pagination,
-    AddAccountDlg,
+    AccountAddDlg,
   },
   data() {
     return {

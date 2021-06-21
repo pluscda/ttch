@@ -5,7 +5,7 @@
       <slot name="header">Header goes here ...</slot>
     </header>
     <section class="modal-body" id="modal-body">
-      <slot name="body">Body goes here ...</slot>
+      <slot>Body goes here ...</slot>
     </section>
 
     <footer class="modal-footer">
