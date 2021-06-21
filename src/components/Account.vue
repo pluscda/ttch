@@ -4,45 +4,21 @@
       <div>系統管理 / 帳號管理</div>
     </header>
     <nav class="ml-1 dtc-search-filters mt-4">
-      <DtxInputGroup prepend="表單狀態">
+      <DtxInputGroup prepend="帳號編號">
+        <el-input placeholder="請輸入帳號編號"></el-input>
+      </DtxInputGroup>
+      <DtxInputGroup prepend="帳號姓名">
+        <el-input placeholder="請輸入帳號姓名"></el-input>
+      </DtxInputGroup>
+      <DtxInputGroup prepend="帳號狀態">
         <el-select filterable v-model="status" placeholder="請選擇" class="border-l-0">
           <el-option v-for="item in []" :key="item.value" :label="item.text" :value="item.value"> </el-option>
         </el-select>
       </DtxInputGroup>
-      <DtxInputGroup prepend="表單類別">
-        <el-select filterable v-model="status" placeholder="請選擇" class="border-l-0">
-          <el-option v-for="item in []" :key="item.value" :label="item.text" :value="item.value"> </el-option>
-        </el-select>
-      </DtxInputGroup>
-      <DtxInputGroup prepend="申請單號">
-        <el-select filterable v-model="status" placeholder="請選擇" class="border-l-0">
-          <el-option v-for="item in []" :key="item.value" :label="item.text" :value="item.value"> </el-option>
-        </el-select>
-      </DtxInputGroup>
-      <DtxInputGroup prepend="申請日期">
-        <Calendar class="h-10" v-model="time1" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
-      </DtxInputGroup>
-      <div class="mx-1 pt-2 dtc-text">至</div>
-      <Calendar class="h-10" v-model="time2" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
-      <!-- <Button label="進行查詢" icon="pi pi-search" @click="search" />
-      <Button label="清除查詢" class="p-button-secondary" icon="pi pi-undo" @click="cleanFilter" /> -->
-    </nav>
-    <nav class="ml-1 dtc-search-filters">
-      <DtxInputGroup prepend="結案日期">
-        <Calendar class="h-10" v-model="time1" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
-      </DtxInputGroup>
-      <div class="mx-1 pt-2 dtc-text">至</div>
-      <Calendar class="h-10" v-model="time2" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
-      <DtxInputGroup prepend="最新簽核日期">
-        <Calendar class="h-10" v-model="time1" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
-      </DtxInputGroup>
-      <div class="mx-1 pt-2 dtc-text">至</div>
-      <Calendar class="h-10" v-model="time2" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
       <Button label="進行查詢" icon="pi pi-search" @click="search" />
       <Button label="清除查詢" class="p-button-secondary" icon="pi pi-undo" @click="cleanFilter" />
     </nav>
-
-    <header class="my-title relative dtc-grid-grumanagement-header dtc-grid-header dtc-grid-header__divs grid-cols-[150px,repeat(9,120px),1fr] mx-1">
+    <header class="my-title relative dtc-grid-grumanagement-header dtc-grid-header dtc-grid-header__divs dtc-template-columns mx-1">
       <!-- <div title="" class="title-word1">採購單(註1)</div> -->
       <div>操作</div>
       <div v-for="(item, i) in headers" :key="i" @click="sort(headers, item)" :title="item.name">
@@ -80,10 +56,6 @@
       <div :title="item.chDrgEnName">{{ item.chDrgEnName || "暫無資料" }}</div>
       <div>{{ item.chDrgAlias || "暫無資料" }}</div>
       <div>{{ item.chDrgMakerName || "暫無資料" }}</div>
-      <div :title="item.chDrgCnName">{{ item.chDrgCnName || "暫無資料" }}</div>
-      <div :title="item.chDrgEnName">{{ item.chDrgEnName || "暫無資料" }}</div>
-      <div>{{ item.chDrgAlias || "暫無資料" }}</div>
-      <div>{{ item.chDrgMakerName || "暫無資料" }}</div>
     </main>
     <!-- 分頁 -->
     <pagination v-show="total > 0" :total="total" v-model:page="listQuery.page" v-model:limit="listQuery.limit" @pagination="getList"></pagination>
@@ -100,16 +72,12 @@ import { useList } from "/@/hooks/useHis.js";
 import { pharmacyTab$ } from "/@/store";
 
 let headers = [
-  { name: "表單類別", key: "chDrgId", sortDesc: null },
-  { name: "申請單號", key: "chHospitalId", sortDesc: null },
-  { name: "狀態", key: "chDrgCnName", sortDesc: null },
-  { name: "證明書", key: "chDrgEnName", sortDesc: null },
-  { name: "同意書", key: "chDrgAlias", sortDesc: null },
-  { name: "附件", key: "chDrgMakerName", sortDesc: null },
-  { name: "申請人", key: "chDrgCnName2", sortDesc: null },
-  { name: "申請日期", key: "chDrgEnName2", sortDesc: null },
-  { name: "簽核日期", key: "chDrgAlias2", sortDesc: null },
-  { name: "結案日期", key: "chDrgMakerName2", sortDesc: null },
+  { name: "帳號編號", key: "chDrgId", sortDesc: null },
+  { name: "帳號姓名", key: "chHospitalId", sortDesc: null },
+  { name: "單位", key: "chDrgCnName", sortDesc: null },
+  { name: "職務", key: "chDrgEnName", sortDesc: null },
+  { name: "電子郵件", key: "chDrgAlias", sortDesc: null },
+  { name: "資料來源", key: "chDrgMakerName", sortDesc: null },
 ];
 
 export default {
@@ -176,7 +144,7 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-template-columns {
-  grid-template-columns: 150px repeat(9, 120px) 1fr;
+  grid-template-columns: 200px repeat(5, 120px) 1fr;
 }
 .management {
   position: relative;
