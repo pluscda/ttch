@@ -1,5 +1,10 @@
 <template>
   <section class="management">
+    <teleport to="#ttModal">
+      <div v-if="modalOpen" class="tt-modal">
+        <AddAccountDialog></AddAccountDialog>
+      </div>
+    </teleport>
     <header class="dtc-page-header">
       <div>系統管理 / 帳號管理</div>
     </header>
@@ -74,6 +79,7 @@ import { useRouter } from "vue-router";
 import Pagination from "cps/Pagination.vue";
 import { useList } from "/@/hooks/useHis.js";
 import { pharmacyTab$ } from "/@/store";
+import AddAccountDialog from "./AddAccountDialog.vue";
 
 let headers = [
   { name: "帳號編號", key: "chDrgId", sortDesc: null },
@@ -88,6 +94,12 @@ export default {
   name: "drugmanagementaddlist",
   components: {
     Pagination,
+    AddAccountDialog,
+  },
+  data() {
+    return {
+      modalOpen: true,
+    };
   },
   setup() {
     const router = useRouter();
