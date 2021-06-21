@@ -51,12 +51,15 @@
       :style="i % 2 == 0 ? `animation-duration:${(i + 1) * 0.1}s ;background-color: white;` : `animation-duration:${(i + 1) * 0.1}s;background-color: #F2F7FF;`"
     >
       <div class="flex flex-none space-x-2">
+        <Button label="重置密碼" class="p-button-sm p-button-success" @click.stop="editItem(item)" />
         <Button label="編輯" class="p-button-sm" @click.stop="editItem(item)" />
         <el-popconfirm title="確定刪除嗎？" confirmButtonText="好的" cancelButtonText="不用了" @confirm="removeItem(item)">
           <template #reference>
             <Button label="刪除" class="p-button-sm p-button-warning" />
           </template>
         </el-popconfirm>
+        <Button label="婉拒" class="p-button-sm p-button-danger" @click.stop="editItem(item)" />
+        <Button label="核准" class="p-button-sm p-button-help" @click.stop="editItem(item)" />
       </div>
 
       <div>{{ item.chDrgId || "暫無資料" }}</div>
@@ -162,7 +165,7 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-template-columns {
-  grid-template-columns: 200px repeat(5, 120px) 1fr;
+  grid-template-columns: 270px repeat(5, 120px) 1fr;
 }
 .management {
   position: relative;
