@@ -4,40 +4,12 @@
       <div>系統管理 / 組織單位管理</div>
     </header>
     <nav class="ml-1 dtc-search-filters mt-4">
-      <DtxInputGroup prepend="表單狀態">
-        <el-select filterable v-model="status" placeholder="請選擇" class="border-l-0">
-          <el-option v-for="item in []" :key="item.value" :label="item.text" :value="item.value"> </el-option>
-        </el-select>
+      <DtxInputGroup prepend="組織單位代號">
+        <el-input label="" placeholder="請輸入組織單位代號"></el-input>
       </DtxInputGroup>
-      <DtxInputGroup prepend="表單類別">
-        <el-select filterable v-model="status" placeholder="請選擇" class="border-l-0">
-          <el-option v-for="item in []" :key="item.value" :label="item.text" :value="item.value"> </el-option>
-        </el-select>
+      <DtxInputGroup prepend="組織單位名稱">
+        <el-input label="" placeholder="請輸入組織單位名稱"></el-input>
       </DtxInputGroup>
-      <DtxInputGroup prepend="申請單號">
-        <el-select filterable v-model="status" placeholder="請選擇" class="border-l-0">
-          <el-option v-for="item in []" :key="item.value" :label="item.text" :value="item.value"> </el-option>
-        </el-select>
-      </DtxInputGroup>
-      <DtxInputGroup prepend="申請日期">
-        <Calendar class="h-10" v-model="time1" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
-      </DtxInputGroup>
-      <div class="mx-1 pt-2 dtc-text">至</div>
-      <Calendar class="h-10" v-model="time2" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
-      <!-- <Button label="進行查詢" icon="pi pi-search" @click="search" />
-      <Button label="清除查詢" class="p-button-secondary" icon="pi pi-undo" @click="cleanFilter" /> -->
-    </nav>
-    <nav class="ml-1 dtc-search-filters">
-      <DtxInputGroup prepend="結案日期">
-        <Calendar class="h-10" v-model="time1" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
-      </DtxInputGroup>
-      <div class="mx-1 pt-2 dtc-text">至</div>
-      <Calendar class="h-10" v-model="time2" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
-      <DtxInputGroup prepend="最新簽核日期">
-        <Calendar class="h-10" v-model="time1" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
-      </DtxInputGroup>
-      <div class="mx-1 pt-2 dtc-text">至</div>
-      <Calendar class="h-10" v-model="time2" placeholder="請輸入日期" :showIcon="true" dateFormat="yy-mm-dd" />
       <Button label="進行查詢" icon="pi pi-search" @click="search" />
       <Button label="清除查詢" class="p-button-secondary" icon="pi pi-undo" @click="cleanFilter" />
     </nav>
@@ -176,7 +148,7 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-template-columns {
-  grid-template-columns: 150px repeat(9, 120px) 1fr;
+  grid-template-columns: 110px repeat(9, 120px) 1fr;
 }
 .management {
   position: relative;
