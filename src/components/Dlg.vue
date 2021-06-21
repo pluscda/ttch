@@ -4,11 +4,11 @@
     <header class="dlg-header z-9">
       <slot name="header">Header goes here ...</slot>
     </header>
-    <section class="modal-body mt-2" id="modal-body">
+    <section class="modal-body mt-8" id="modal-body">
       <slot name="body">Body goes here ...</slot>
     </section>
 
-    <footer class="modal-footer">
+    <footer class="modal-footer mt-9">
       <slot name="footer">Footer goes here ...</slot>
     </footer>
   </div>

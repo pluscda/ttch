@@ -5,9 +5,9 @@
     </template>
 
     <template v-slot:body>
-      <main class="main-body grid grid-cols-[250px,250px] gap-[4px]">
-        <div class="!bg-red-800 h-[200px] w-full"></div>
-        <div class="!bg-red-800 h-[200px] w-full"></div>
+      <main class="grid grid-cols-[400px,400px] gap-[10px]">
+        <div class="w-full"></div>
+        <div class="w-full"></div>
       </main>
     </template>
 
