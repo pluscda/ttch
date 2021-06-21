@@ -1,5 +1,10 @@
 <template>
   <section class="management">
+    <teleport to="#ttModal">
+      <div v-if="modalOpen" class="tt-modal">
+        <PlayerAddDlg @click.stop=""> </PlayerAddDlg>
+      </div>
+    </teleport>
     <header class="dtc-page-header grid dtc-page-header__grid pr-2">
       <div>系統管理 / 職稱管理</div>
     </header>
@@ -13,6 +18,9 @@
 
       <Button label="進行查詢" icon="pi pi-search" @click="search" />
       <Button label="清除查詢" class="p-button-secondary" icon="pi pi-undo" @click="cleanFilter" />
+    </nav>
+    <nav class="ml-2 dtc-search-filters">
+      <Button class="p-button" label="新增職稱" icon="pi pi-plus" @click.stop="modalOpen = true" />
     </nav>
 
     <header data-msg="" class="my-title relative dtc-grid-grumanagement-header dtc-grid-header dtc-grid-header__divs dtc-template-columns mx-1">
@@ -61,8 +69,8 @@ import { toRefs, ref, inject } from "vue";
 import { useRouter } from "vue-router";
 import Pagination from "cps/Pagination.vue";
 import { useList } from "/@/hooks/useHis.js";
-import { pharmacyTab$ } from "/@/store";
-
+import PlayerAddDlg from "./PlayerAddDlg.vue";
+import { closeDlg$ } from "/@/store";
 let headers = [
   { name: "職稱-ID", key: "chDrgId", sortDesc: null },
   { name: "職稱", key: "chHospitalId", sortDesc: null },
@@ -71,6 +79,12 @@ let headers = [
 export default {
   components: {
     Pagination,
+    PlayerAddDlg,
+  },
+  data() {
+    return {
+      modalOpen: false,
+    };
   },
   setup() {
     const router = useRouter();
@@ -78,8 +92,6 @@ export default {
     const searchDrugName = ref("");
     const searchDrgMaker = ref("");
     const global = inject("global");
-    pharmacyTab$.next("0");
-
     headers = ref(headers);
     const { state, getList, sort, clearFilters, removeItem, getItemDetail } = useList("drg-infos");
 
@@ -125,6 +137,7 @@ export default {
   },
   mounted() {
     this.$primevue.config.locale = this.zh;
+    closeDlg$.subscribe(() => (this.modalOpen = false));
   },
 };
 </script>
