@@ -39,6 +39,9 @@ export default {
       return this.$route.path.includes("/login"); // || this.$route.path.includes('dtcregister') || this.$route.path.includes('resetpwd');
     },
   },
+  methods: {
+    noop() {},
+  },
   mounted() {
     // Mousetrap.init();
     // Mousetrap.bind('4', function () {

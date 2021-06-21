@@ -2,7 +2,7 @@
   <section class="management">
     <teleport to="#ttModal">
       <div v-if="modalOpen" class="tt-modal">
-        <AddAccountDlg></AddAccountDlg>
+        <AddAccountDlg @click.stop=""></AddAccountDlg>
       </div>
     </teleport>
     <header class="dtc-page-header">
