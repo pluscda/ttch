@@ -1,6 +1,6 @@
 <template>
   <section class="management">
-    <header class="dtc-page-header grid dtc-page-header__grid pr-2">
+    <header class="dtc-page-header">
       <div>系統管理 / 帳號管理</div>
     </header>
     <nav class="ml-1 dtc-search-filters mt-4">
@@ -18,6 +18,10 @@
       <Button label="進行查詢" icon="pi pi-search" @click="search" />
       <Button label="清除查詢" class="p-button-secondary" icon="pi pi-undo" @click="cleanFilter" />
     </nav>
+    <nav class="ml-2 dtc-search-filters">
+      <Button class="p-button" label="新增" icon="pi pi-plus" />
+    </nav>
+
     <header class="my-title relative dtc-grid-grumanagement-header dtc-grid-header dtc-grid-header__divs dtc-template-columns mx-1">
       <!-- <div title="" class="title-word1">採購單(註1)</div> -->
       <div>操作</div>

@@ -91,7 +91,7 @@ export default {
   justify-content: center;
   grid-template-columns: max-content 120px max-content;
   gap: 1rem;
-  width: 100vw;
+  width: calc(100vw - 250px);
   font-family: Arial, Helvetica, sans-serif, "Microsoft JhengHei" !important;
 }
 .pagination-container.hidden {
