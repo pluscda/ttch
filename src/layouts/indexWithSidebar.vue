@@ -24,7 +24,9 @@
     <main ref="mainRef" class="main-sec">
       <suspense>
         <template #default>
-          <component :is="myCmp"></component>
+          <transition name="mode-fade" mode="out-in">
+            <component :is="myCmp"></component>
+          </transition>
         </template>
         <template #fallback>
           <div>Loading...</div>
@@ -231,5 +233,14 @@ export default {
 .main-sec {
   transition: all 0.3s ease-in-out;
   max-width: calc(100vw - 63px);
+}
+.mode-fade-enter-active,
+.mode-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.mode-fade-enter-from,
+.mode-fade-leave-to {
+  opacity: 0;
 }
 </style>
