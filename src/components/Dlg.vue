@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col relative">
-    <i class="el-icon-close text-xl text-white block w-[16px] h-[16px] absolute right-2 top-2 z-10 cursor-pointer"></i>
+    <i class="el-icon-close text-xl text-white block w-[16px] h-[16px] absolute right-2 top-2 z-10 cursor-pointer" @click="closeDlg$.next('')"></i>
     <header class="dlg-header z-9">
       <slot name="header">Header goes here ...</slot>
     </header>
@@ -16,7 +16,13 @@
 
 <script>
 import { closeDlg$ } from "/@/store";
-export default {};
+export default {
+  data() {
+    return {
+      closeDlg$,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
