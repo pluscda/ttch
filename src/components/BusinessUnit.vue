@@ -70,6 +70,7 @@ import Pagination from "cps/Pagination.vue";
 import { useList } from "/@/hooks/useHis.js";
 import { pharmacyTab$ } from "/@/store";
 import BusinessDlg from "./BusinessUnitAddDlg.vue";
+import { closeDlg$ } from "/@/store";
 
 let headers = [
   { name: "組織單位代號", key: "chHospitalId", sortDesc: null },
@@ -140,6 +141,7 @@ export default {
   },
   mounted() {
     this.$primevue.config.locale = this.zh;
+    closeDlg$.subscribe(() => (this.modalOpen = false));
   },
 };
 </script>

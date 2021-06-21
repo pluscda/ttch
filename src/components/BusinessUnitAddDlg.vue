@@ -6,10 +6,10 @@
 
     <template v-slot:body>
       <main class="flex flex-col space-y-3">
-        <DtxInputGroup prepend="組織單位代號" labelWidth="188">
+        <DtxInputGroup prepend="組織單位代號" labelWidth="168">
           <el-input placeholder="請輸入組織單位代號"></el-input>
         </DtxInputGroup>
-        <DtxInputGroup prepend="組織單位名稱" labelWidth="188">
+        <DtxInputGroup prepend="組織單位名稱" labelWidth="168">
           <el-input placeholder="請輸入組織單位名稱"></el-input>
         </DtxInputGroup>
       </main>
