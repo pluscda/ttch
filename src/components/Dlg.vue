@@ -4,8 +4,8 @@
     <header class="dlg-header z-9">
       <slot name="header">Header goes here ...</slot>
     </header>
-    <section class="modal-body" id="modal-body">
-      <slot>Body goes here ...</slot>
+    <section class="modal-body mt-2" id="modal-body">
+      <slot name="body">Body goes here ...</slot>
     </section>
 
     <footer class="modal-footer">

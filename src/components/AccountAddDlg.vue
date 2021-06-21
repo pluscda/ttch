@@ -1,10 +1,15 @@
 <template>
   <Dlg>
     <template v-slot:header>
-      <h1>Here might be a page title</h1>
+      <h1>新增帳號</h1>
     </template>
 
-    <template v-slot> </template>
+    <template v-slot:body>
+      <main class="main-body grid grid-cols-[250px,250px] gap-[4px]">
+        <div class="!bg-red-800 h-[200px] w-full"></div>
+        <div class="!bg-red-800 h-[200px] w-full"></div>
+      </main>
+    </template>
 
     <template v-slot:footer>
       <p>H22ere's some contact info</p>
@@ -28,19 +33,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.dlg-header {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  background: #00448c;
-  width: 100%;
-  color: white;
-  height: 2rem;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  line-height: 2rem;
-  text-align: left;
-  padding-left: 10px;
-  letter-spacing: 2.4px;
+.main-body {
 }
 </style>
