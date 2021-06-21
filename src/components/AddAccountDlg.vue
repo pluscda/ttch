@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { closeDlg$ } from "/@/store";
 export default {};
 </script>
 
