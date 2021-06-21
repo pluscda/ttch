@@ -48,14 +48,6 @@
 
       <div>{{ item.chDrgId || "暫無資料" }}</div>
       <div>{{ item.chHospitalId || "暫無資料" }}</div>
-      <div :title="item.chDrgCnName">{{ item.chDrgCnName || "暫無資料" }}</div>
-      <div :title="item.chDrgEnName">{{ item.chDrgEnName || "暫無資料" }}</div>
-      <div>{{ item.chDrgAlias || "暫無資料" }}</div>
-      <div>{{ item.chDrgMakerName || "暫無資料" }}</div>
-      <div :title="item.chDrgCnName">{{ item.chDrgCnName || "暫無資料" }}</div>
-      <div :title="item.chDrgEnName">{{ item.chDrgEnName || "暫無資料" }}</div>
-      <div>{{ item.chDrgAlias || "暫無資料" }}</div>
-      <div>{{ item.chDrgMakerName || "暫無資料" }}</div>
     </main>
     <!-- 分頁 -->
     <pagination v-show="total > 0" :total="total" v-model:page="listQuery.page" v-model:limit="listQuery.limit" @pagination="getList"></pagination>
@@ -72,16 +64,8 @@ import { useList } from "/@/hooks/useHis.js";
 import { pharmacyTab$ } from "/@/store";
 
 let headers = [
-  { name: "表單類別", key: "chDrgId", sortDesc: null },
-  { name: "申請單號", key: "chHospitalId", sortDesc: null },
-  { name: "狀態", key: "chDrgCnName", sortDesc: null },
-  { name: "證明書", key: "chDrgEnName", sortDesc: null },
-  { name: "同意書", key: "chDrgAlias", sortDesc: null },
-  { name: "附件", key: "chDrgMakerName", sortDesc: null },
-  { name: "申請人", key: "chDrgCnName2", sortDesc: null },
-  { name: "申請日期", key: "chDrgEnName2", sortDesc: null },
-  { name: "簽核日期", key: "chDrgAlias2", sortDesc: null },
-  { name: "結案日期", key: "chDrgMakerName2", sortDesc: null },
+  { name: "組織單位代號", key: "chHospitalId", sortDesc: null },
+  { name: "組織單位名稱", key: "chDrgCnName", sortDesc: null },
 ];
 
 export default {
@@ -148,7 +132,7 @@ export default {
 
 <style lang="scss" scoped>
 .dtc-template-columns {
-  grid-template-columns: 110px repeat(9, 120px) 1fr;
+  grid-template-columns: 110px repeat(1, 320px) 1fr;
 }
 .management {
   position: relative;
