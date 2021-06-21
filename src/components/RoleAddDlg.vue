@@ -12,6 +12,10 @@
         <DtxInputGroup prepend="角色名稱" labelWidth="128">
           <el-input placeholder="請輸入角色名稱"></el-input>
         </DtxInputGroup>
+        <DtxInputGroup prepend="啟用狀態" labelWidth="128">
+          <InputSwitch></InputSwitch>
+          <label for="binary" class="inline-block tran -translate-y-2 translate-x-2">啟用</label>
+        </DtxInputGroup>
       </main>
     </template>
 
