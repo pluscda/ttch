@@ -24,7 +24,7 @@
       <Button label="清除查詢" class="p-button-secondary" icon="pi pi-undo" @click="cleanFilter" />
     </nav>
     <nav class="ml-2 dtc-search-filters">
-      <Button class="p-button" label="新增" icon="pi pi-plus" />
+      <Button class="p-button" label="新增" icon="pi pi-plus" @click.stop="modalOpen = true" />
     </nav>
 
     <header class="my-title relative dtc-grid-grumanagement-header dtc-grid-header dtc-grid-header__divs dtc-template-columns mx-1">
@@ -80,6 +80,7 @@ import Pagination from "cps/Pagination.vue";
 import { useList } from "/@/hooks/useHis.js";
 import { pharmacyTab$ } from "/@/store";
 import AddAccountDialog from "./AddAccountDialog.vue";
+import { closeDlg$ } from "/@/store";
 
 let headers = [
   { name: "帳號編號", key: "chDrgId", sortDesc: null },
@@ -98,7 +99,7 @@ export default {
   },
   data() {
     return {
-      modalOpen: true,
+      modalOpen: false,
     };
   },
   setup() {
@@ -154,6 +155,7 @@ export default {
   },
   mounted() {
     this.$primevue.config.locale = this.zh;
+    closeDlg$.subscribe(() => (this.modalOpen = false));
   },
 };
 </script>

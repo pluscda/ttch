@@ -39,6 +39,7 @@
 <script>
 import { defineAsyncComponent } from "vue";
 import { fromEvent } from "rxjs";
+import { closeDlg$ } from "/@/store";
 import { ElMessage } from "element-plus";
 import { find, repeatWhen, mapTo, startWith, filter, tap } from "rxjs/operators";
 const icons = ["management.png", "application.png", "mailbox.png", "reviewarea.png", "search.png", "auditstatistics.png"];
@@ -50,7 +51,8 @@ const row3 = `待審核資料匣,已審核資料匣`;
 const row4 = `電子表單通用查詢作業`;
 const row5 = `交易歷程,一般統計查詢`;
 const rows = [row0, row1, row2, row3, row4, row5];
-let sub1 = "";
+let sub1 = "",
+  sub2 = "";
 export default {
   name: "indexwidthbar2",
   data() {
@@ -150,6 +152,7 @@ export default {
       el ? el.classList.remove("dtc-heightlight-tab") : "";
       this.activeTab = -1;
       this.$refs.mainRef.style = `transform: translate3d(0, 0, 0)`;
+      closeDlg$.next("");
     },
   },
   mounted() {
