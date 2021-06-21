@@ -1,5 +1,10 @@
 <template>
   <section class="management">
+    <teleport to="#ttModal">
+      <div v-if="modalOpen" class="tt-modal">
+        <BusinessDlg @click.stop=""> </BusinessDlg>
+      </div>
+    </teleport>
     <header class="dtc-page-header grid dtc-page-header__grid pr-2">
       <div>系統管理 / 組織單位管理</div>
     </header>
@@ -13,7 +18,9 @@
       <Button label="進行查詢" icon="pi pi-search" @click="search" />
       <Button label="清除查詢" class="p-button-secondary" icon="pi pi-undo" @click="cleanFilter" />
     </nav>
-
+    <nav class="ml-2 dtc-search-filters">
+      <Button class="p-button" label="新增組織單位" icon="pi pi-plus" @click.stop="modalOpen = true" />
+    </nav>
     <header data-msg="" class="my-title relative dtc-grid-grumanagement-header dtc-grid-header dtc-grid-header__divs dtc-template-columns mx-1">
       <!-- <div title="" class="title-word1">採購單(註1)</div> -->
       <div>操作</div>
@@ -62,6 +69,7 @@ import { useRouter } from "vue-router";
 import Pagination from "cps/Pagination.vue";
 import { useList } from "/@/hooks/useHis.js";
 import { pharmacyTab$ } from "/@/store";
+import BusinessDlg from "./BusinessUnitAddDlg.vue";
 
 let headers = [
   { name: "組織單位代號", key: "chHospitalId", sortDesc: null },
@@ -72,6 +80,12 @@ export default {
   name: "drugmanagementaddlist",
   components: {
     Pagination,
+    BusinessDlg,
+  },
+  data() {
+    return {
+      modalOpen: false,
+    };
   },
   setup() {
     const router = useRouter();

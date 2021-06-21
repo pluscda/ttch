@@ -46,20 +46,18 @@
     <template v-slot:footer>
       <div class="flex justify-end space-x-4 w-[800px]">
         <Button>新增帳號</Button>
-        <Button class="p-button-secondary">取消新增</Button>
+        <Button class="p-button-secondary">取消變更</Button>
       </div>
     </template>
   </Dlg>
 </template>
 
 <script>
-import { closeDlg$ } from "/@/store";
 import Dlg from "./Dlg.vue";
 const roles = ["系統管理者", "系統管理者", "系統管理者", "系統管理者", "系統管理者", "系統管理者", "系統管理者", "系統管理者"];
 export default {
   data() {
     return {
-      closeDlg$,
       roles,
     };
   },
