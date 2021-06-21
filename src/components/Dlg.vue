@@ -30,7 +30,7 @@ export default {
   position: absolute;
   top: 0px;
   left: 0px;
-  background: blue;
+  background: #00448c;
   width: 100%;
   color: white;
   height: 2rem;
@@ -39,5 +39,6 @@ export default {
   line-height: 2rem;
   text-align: left;
   padding-left: 10px;
+  letter-spacing: 2.4px;
 }
 </style>
