@@ -39,6 +39,5 @@ export default {
   line-height: 2rem;
   text-align: left;
   padding-left: 10px;
-  display: grid;
 }
 </style>
