@@ -24,7 +24,7 @@
       <Button label="清除查詢" class="p-button-secondary" icon="pi pi-undo" @click="cleanFilter" />
     </nav>
     <nav class="ml-2 dtc-search-filters">
-      <Button class="p-button" label="新增" icon="pi pi-plus" @click.stop="modalOpen = true" />
+      <Button class="p-button" label="新增帳號" icon="pi pi-plus" @click.stop="modalOpen = true" />
     </nav>
 
     <header class="my-title relative dtc-grid-grumanagement-header dtc-grid-header dtc-grid-header__divs dtc-template-columns mx-1">
