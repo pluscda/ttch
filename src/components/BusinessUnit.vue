@@ -68,7 +68,6 @@ import { toRefs, ref, inject } from "vue";
 import { useRouter } from "vue-router";
 import Pagination from "cps/Pagination.vue";
 import { useList } from "/@/hooks/useHis.js";
-import { pharmacyTab$ } from "/@/store";
 import BusinessDlg from "./BusinessUnitAddDlg.vue";
 import { closeDlg$ } from "/@/store";
 
@@ -94,7 +93,6 @@ export default {
     const searchDrugName = ref("");
     const searchDrgMaker = ref("");
     const global = inject("global");
-    pharmacyTab$.next("0");
 
     headers = ref(headers);
     const { state, getList, sort, clearFilters, removeItem, getItemDetail } = useList("drg-infos");
