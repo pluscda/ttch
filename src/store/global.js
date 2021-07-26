@@ -1,10 +1,10 @@
 import { reactive } from "vue";
 import axios from "utils/request";
-import { logout$ } from "/@/store";
+import { logout$} from "/@/store";
 import checkNhiCard from "utils/websock.js";
 import {firstValueFrom,defer,ReplaySubject} from "rxjs"
 import { share } from "rxjs/operators";
-//https://medium.com/volosoft/whats-new-in-rxjs-7-a11cc564c6c0
+//DTC UI : https://xd.adobe.com/view/ad9e8ea2-8b31-408d-5602-7ae0986dd2e0-dbaf/     pass: Dtcdevt3135
 const delyAjax = (url) => defer( _ => axios.get(url)).pipe( share({connector: () => new ReplaySubject(1)}) );
 
 //用藥單位

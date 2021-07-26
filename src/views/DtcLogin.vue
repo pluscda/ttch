@@ -1,83 +1,72 @@
 <template>
-  <div id="dtc-login">
-    <section class="login-panel">
-      <h3 class="text-2xl text-white mb-11">登入基本醫療服務</h3>
-      <el-input placeholder="使用者信箱" v-model="name" class="">
-        <template #prepend>
-          <i-mdi:email></i-mdi:email>
-        </template>
-      </el-input>
-      <div class="mb-6"></div>
-      <el-input placeholder="使用者密碼" v-model="pwd" class="">
-        <template #prepend>
-          <i-ri:lock-password-fill />
-        </template>
-      </el-input>
-      <div class="mb-10"></div>
-      <el-button type="warning" class="max-w-md" round @click="login">登入</el-button>
-      <footer class="flex justify-between hidden">
-        <h4 class="pl-2 mt-4 text-sm text-left text-orange-200 cursor-pointer" @click.stop="$router.push('/dtcregister')">註冊帳戶</h4>
-        <h4 class="relative float-right pl-2 mt-4 text-sm text-left text-orange-200 cursor-pointer" @click.stop="$router.push('/resetpwd')">忘記密碼</h4>
-      </footer>
-    </section>
-  </div>
+  <section class="relative grid place-items-center !bg-white" style="width: 100vw; height: 100vh">
+    <div class="absolute inset-3 z-0">
+      <img src="/logo.png" />
+    </div>
+    <div class="flex flex-col dtc-box relative login-box z-10" data-msg="生物安全會電子表單系統">
+      <img src="/login.png" class="mt-10 object-contain block self-center" width="190" height="40" />
+      <div class="dtc-input ml-20 flex space-x-2 mt-10">
+        <img src="/user.png" class="object-contain block" width="40" height="40" />
+        <InputText type="text" v-model="value1" class="z-20 !bg-white w-64" placeholder="請輸入帳號"></InputText>
+      </div>
+      <div class="dtc-input ml-20 flex space-x-2 mt-10">
+        <img src="/password.png" class="object-contain block" width="40" height="40" />
+        <InputText placeholder="請輸入密碼" type="password" v-model="pwd" class="z-20 !bg-white w-64" />
+      </div>
+      <div class="dtc-input ml-20 flex space-x-2 mt-10">
+        <img src="/verificationcode.png" class="object-contain block" width="40" height="40" />
+        <InputText placeholder="請輸入驗證碼" type="text" v-model="pass2" class="z-20 !bg-white w-28" />
+        <img src="/turn.png" class="object-contain block" width="30" height="30" />
+      </div>
+
+      <div class="dtc-input ml-36 flex space-x-6 mt-10 z-20">
+        <Button @click="$router.push('/pharmacy')">確認登入</Button>
+        <Button class="p-button-secondary">重新輸入</Button>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 import { inject, ref } from "vue";
 import { useRouter } from "vue-router";
 export default {
-  setup() {
-    const actions = inject("actions");
-    const name = ref("14tc_14_16_03");
-    const pwd = ref("654321");
-    const router = useRouter();
-    async function login() {
-      try {
-        // const { jwt, user, message } = await actions.login({ identifier: name.value, password: pwd.value });
-        // sessionStorage.token = jwt;
-        // jwt ? router.push("/register/list") : alert(JSON.stringify(message));
-        sessionStorage.token = "12";
-        actions.getAllDDL();
-        router.push("/register/list");
-      } catch (e) {
-        alert("error: " + e);
-      }
-    }
-
-    return { name, pwd, login };
+  data() {
+    return {
+      value1: "",
+      pwd: "",
+      pass2: "",
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-#dtc-login {
-  background-image: url("//unsplash.it/998/998");
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  display: grid;
-  place-items: center;
-  height: 100vh;
-}
-</style>
-
-<style lang="scss" scoped>
-.login-panel {
-  height: 370px;
-  width: 400px;
-  border-radius: 20px !important;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.6) !important;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  z-index: 99999;
+.dtc-box {
+  width: 503px;
+  height: 517px;
+  background: #ebf2ff 0% 0% no-repeat padding-box;
+  border-radius: 6px;
+  z-index: 5;
 }
 
-:deep(.el-input-group__append),
-:deep(.el-input-group__prepend) {
-  background-color: #ffc107;
-  color: black;
+.login-box::before,
+.login-box::after {
+  content: attr(data-msg);
+  position: absolute;
+  font: normal normal bold 40px/58px Source Han Sans TW;
+  letter-spacing: 4px;
+  color: #00448c;
+  z-index: 1;
+  top: -60px;
+  left: 10px;
+}
+.login-box::after {
+  content: "";
+  top: 0;
+  bottom: -60px;
+  left: 0;
+  right: 0px;
+  background: url(dtclogo.png) no-repeat bottom right;
 }
 </style>

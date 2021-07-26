@@ -1,4 +1,4 @@
-#app.light {
+.dark , .light{
   background: var(--light) !important;
 
   .p-inputtextarea {
@@ -97,4 +97,19 @@
   .p-autocomplete-input {
     border: none;
   }
+}
+
+#app {
+.dtc-page-header {
+  background-color: white !important;
+  font: normal normal bold 27px/39px Source Han Sans TW !important;
+  letter-spacing: 2.7px !important;
+  color: #0d2c80 !important;
+  line-height: 3.5rem !important;
+}
+.dtc-grid-header__divs > div {
+  background: #d4d4d8 !important;
+  color: #0a2548 !important;
+}
+
 }

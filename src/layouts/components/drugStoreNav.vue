@@ -7,7 +7,7 @@
     :class="activeTab == i ? 'active-tab' : ''"
     @click="handleChangeTab(item, i)"
   >
-    <i :class="icons[i]" class="inline-block mt-0.5"></i>
+     :class="icons[i]" class="inline-block mt-0.5"></i>
     <p class="text-left">{{ item }}</p>
   </div>
   <!-- <DrugAdd /> -->

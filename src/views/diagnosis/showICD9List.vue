@@ -1,38 +1,15 @@
 <template>
-  <Dialog
-    header="選擇ICD9"
-    :style="{ width: '50vw' }"
-    v-model:visible="displayBasic"
-    :modal="true"
-    :closable="false"
-  >
-    <header
-      class="
-        dtc-grid-grumanagement-header dtc-grid-header dtc-template-columns
-        mx-2
-        dtc-color
-      "
-    >
-      <div
-        v-for="(item, i) in headers"
-        :key="`${item}${i}dtc-grid-header`"
-        :title="item.name"
-      >
+  <Dialog header="選擇ICD9" :style="{ width: '50vw' }" v-model:visible="displayBasic" :modal="true" :closable="false">
+    <header class="dtc-grid-grumanagement-header dtc-grid-header dtc-template-columns mx-2 dtc-color">
+      <div v-for="(item, i) in headers" :key="`${item}${i}dtc-grid-header`" :title="item.name">
         {{ item.name }}
       </div>
     </header>
     <main
-      class="
-        dtc-grid-header dtc-grid-body dtc-template-columns
-        text-black
-        mx-2
-        content
-      "
+      class="dtc-grid-header dtc-grid-body dtc-template-columns text-black mx-2 content"
       v-for="(item, i) in list"
       :key="i"
-      :style="
-        i % 2 == 0 ? 'background-color: #F5F5F5;' : 'background-color: #E0E0E0;'
-      "
+      :style="i % 2 == 0 ? 'background-color: white;' : 'background-color: #F2F7FF;'"
       @click="selectICD9(item)"
     >
       <div>{{ item.value }}</div>
@@ -62,9 +39,7 @@ export default {
     });
 
     let list = computed(() => {
-      const filter = props.allICD9Optopns.filter((s) =>
-        s.combine.includes(searchItem.value)
-      );
+      const filter = props.allICD9Optopns.filter((s) => s.combine.includes(searchItem.value));
       return filter;
     });
 

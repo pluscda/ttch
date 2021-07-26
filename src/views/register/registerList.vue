@@ -79,7 +79,7 @@
       v-for="(item, i) in list"
       :key="i"
       style="animation-duration: 0.3s"
-      :style="i % 2 == 0 ? 'background-color: #F5F5F5;' : 'background-color: #E0E0E0;'"
+      :style="i % 2 == 0 ? 'background-color: white;' : 'background-color: #F2F7FF;'"
     >
       <div>{{ i + 1 }}</div>
       <div>暫無資料</div>

@@ -46,7 +46,7 @@
       class="dtc-grid-header dtc-grid-body dtc-template-columns text-black ml-1 mx-1"
       v-for="(item, i) in list"
       :key="i"
-      :style="i % 2 == 0 ? 'background-color: #F5F5F5;' : 'background-color: #E0E0E0;'"
+      :style="i % 2 == 0 ? 'background-color: white;' : 'background-color: #F2F7FF;'"
     >
       <div class="flex flex-none space-x-2">
         <Button label="入庫單明細" class="p-button-sm" @click="editItem(item)" />

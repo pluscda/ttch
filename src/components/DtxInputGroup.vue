@@ -29,7 +29,11 @@ export default {
 :deep(.el-select) {
   width: 100%;
 }
+
 .dtc-label {
-  @apply bg-light-pattern text-black;
+  background: #e6eaf5 !important;
+  font: normal normal medium 25px/36px Source Han Sans TW !important;
+  letter-spacing: 2.5px !important;
+  color: #001651 !important;
 }
 </style>

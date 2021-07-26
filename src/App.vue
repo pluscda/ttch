@@ -2,7 +2,7 @@
   <section class="relative top-section">
     <main class="warning-idle" v-if="idle1 && !$route.path.includes('login')">
       <nav>
-        <header>基本醫療服務系統資訊</header>
+        <header>生物安全會電子表單系統</header>
         <p style="margin-top: 35px">系統已閒置一段期間,會將您自動登出帳戶</p>
         <p style="margin-top: 12px">
           將在
@@ -13,6 +13,8 @@
     </main>
     <NavBar v-if="!withinLogoutPages"></NavBar>
     <router-view></router-view>
+    <!-- https://codepen.io/jmalatia/pen/KKzwpXg -->
+    <div id="ttModal"></div>
   </section>
 </template>
 
@@ -36,6 +38,9 @@ export default {
     withinLogoutPages() {
       return this.$route.path.includes("/login"); // || this.$route.path.includes('dtcregister') || this.$route.path.includes('resetpwd');
     },
+  },
+  methods: {
+    noop() {},
   },
   mounted() {
     // Mousetrap.init();
@@ -81,6 +86,7 @@ watch(idle2, () => {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   overflow: hidden !important;
+  bacground: white !important;
 }
 
 .warning-idle {

@@ -20,7 +20,7 @@
       class="ml-1 text-black cursor-pointer dtc-grid-header dtc-grid-body dtc-template-columns"
       v-for="(item, i) in list"
       :key="i"
-      :style="i % 2 == 0 ? 'background-color: #F5F5F5;' : 'background-color: #E0E0E0;'"
+      :style="i % 2 == 0 ? 'background-color: white;' : 'background-color: #F2F7FF;'"
       @click.stop="toggleDetail(item)"
     >
       <div>

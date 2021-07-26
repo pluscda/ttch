@@ -17,6 +17,7 @@ import PrimeVue from "primevue/config";
 import Calendar from "primevue/calendar";
 import Button from "primevue/button";
 import InputSwitch from "primevue/inputswitch";
+import InputText from 'primevue/inputtext';
 import OverlayPanel from "primevue/overlaypanel";
 import RadioButton from "primevue/radiobutton";
 import ProgressSpinner from "primevue/progressspinner";
@@ -40,6 +41,7 @@ app.component("Textarea", Textarea);
 app.component("InputNumber", InputNumber);
 app.component("AutoComplete", AutoComplete);
 app.component("Dialog", Dialog);
+app.component("InputText", InputText);
 // DTC Custom UI components
 app.component("DtxInputGroup", DtxInputGroup);
 // Global setting
